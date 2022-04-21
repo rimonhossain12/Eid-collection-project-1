@@ -14,7 +14,7 @@ const AddProduct = () => {
 
     const onSubmit = data => {
         console.log(data);
-        fetch('http://localhost:5000/Products', {
+        fetch('http://localhost:5000/shart', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
