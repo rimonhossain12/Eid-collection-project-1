@@ -2,35 +2,41 @@ import React, { useState } from 'react';
 import Banner from '../Shared/Banner/Banner';
 import { useForm } from "react-hook-form";
 import './AddProduct.css';
+import { Button, Modal } from 'react-bootstrap';
 
 const AddProduct = () => {
-    const [product, setProduct] = useState();
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
     // const [status,setStatus] = useState(true);/
-    const { register, handleSubmit } = useForm();
+    const { register, handleSubmit, reset } = useForm();
 
     const onSubmit = data => {
         console.log(data);
         fetch('http://localhost:5000/Products', {
-            method:'POST',
-            headers:{
-                'content-type':'application/json'
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
             },
-            body:JSON.stringify(data)
+            body: JSON.stringify(data)
         })
-        .then(res => res.json())
-        .then(data => {
-            console.log('successfully');
-        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.insertedId) {
+                    handleShow();
+                    <Button variant="primary" onClick={handleShow}>
+                        Launch static backdrop modal
+                    </Button>
+                    reset();
+                }
+            })
     }
     return (
         <div>
             <Banner />
             <h2 className='mt-5'>Added your products</h2>
             <div className='form-div'>
-                {/* <div>
-                    <p>Please selected product Name</p>
-                    <button className='btn'>man</button><button>woman</button><button>shoes</button><button>panjabi</button>
-                </div> */}
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <input placeholder='product name' className='form-control'{...register("name")} />
                     <input placeholder='product images' className='form-control'{...register("images")} />
@@ -41,6 +47,23 @@ const AddProduct = () => {
                 </form>
             </div>
 
+            <>
+                <Modal
+                    show={show}
+                    onHide={handleClose}
+                    backdrop="static"
+                    keyboard={false}
+                >
+                    <Modal.Body>
+                        Thank your for added new products.
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <Button variant="primary" className="mx-auto" onClick={handleClose}>
+                            Close
+                        </Button>
+                    </Modal.Footer>
+                </Modal>
+            </>
         </div>
     );
 };

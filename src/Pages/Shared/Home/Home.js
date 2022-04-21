@@ -1,12 +1,12 @@
 import React from 'react';
-// import Slider from '../../Slider/Slider';
+import Ladies from '../../Products/Ladies/Ladies';
 import Banner from '../Banner/Banner';
 
 const Home = () => {
     return (
         <div>
             <Banner/>
-            {/* <Slider/> */}
+            <Ladies/>
         </div>
     );
 };
