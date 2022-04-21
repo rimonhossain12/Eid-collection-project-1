@@ -29,7 +29,7 @@ const Banner = () => {
                         <Navbar.Collapse id="basic-navbar-nav">
                             <Nav className="ms-auto">
                                 <Nav.Link as={HashLink} to="/home#home" style={{ color: 'white' }}>Home</Nav.Link>
-                                <Nav.Link as={HashLink} to="/AddProduct#AddProduct" style={{ color: 'white' }}>Product</Nav.Link>
+                                <Nav.Link as={HashLink} to="/AddProduct#AddProduct" style={{ color: 'white' }}>AddProduct</Nav.Link>
                             </Nav>
                         </Navbar.Collapse>
                     </Container>
