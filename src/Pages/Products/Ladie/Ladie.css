@@ -1,0 +1,12 @@
+.div-height{
+    height: 450px;
+}
+
+#img-style{
+    height: 250px;
+    transition: all .5s;
+}
+
+#img-style:hover{
+    transform: scale(1.1);
+}
