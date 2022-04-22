@@ -14,7 +14,7 @@ const AddProduct = () => {
 
     const onSubmit = data => {
         console.log(data);
-        fetch('http://localhost:5000/shart', {
+        fetch('http://localhost:5000/addedProduct', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -38,12 +38,12 @@ const AddProduct = () => {
             <h2 className='mt-5'>Added your products</h2>
             <div className='form-div'>
                 <form onSubmit={handleSubmit(onSubmit)}>
-                    <input placeholder='product name' className='form-control'{...register("name")} />
-                    <input placeholder='product images' className='form-control'{...register("images")} />
-                    <input placeholder='product price' className='form-control' {...register("price")} />
-                    <input placeholder='product Rating' className='form-control' {...register("rating")} />
-                    <input placeholder='product country' className='form-control' {...register("country")} />
-                    <button type="submit" className="btn btn-secondary w-50 mt-3">Submit</button>
+                    <input placeholder='product name' required className='form-control'{...register("name")} />
+                    <input placeholder='product images' required className='form-control'{...register("images")} />
+                    <input placeholder='product price' required className='form-control' {...register("price")} />
+                    <input placeholder='product Rating' required className='form-control' {...register("rating")} />
+                    <input placeholder='product country' required className='form-control' {...register("country")} />
+                    <button type="submit"  required className="btn btn-secondary w-50 mt-3">Submit</button>
                 </form>
             </div>
 
