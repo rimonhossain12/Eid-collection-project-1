@@ -29,7 +29,7 @@ const Product = ({product}) => {
                                 />
                             </h6>
                             <p className='fw-normal text-start'>{country}</p>
-                            <Link to={`product/${_id}`}>
+                            <Link to={`/order/${_id}`}>
                             <button className="btn-style btn btn-primary badge rounded-pill bg-primary">shop Now</button>
                             </Link>
                         </div>
