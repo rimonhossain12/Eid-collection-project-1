@@ -1,9 +1,10 @@
 import React from 'react';
 import ReactStars from 'react-rating-stars-component';
+import { Link } from 'react-router-dom';
 import './Product.css';
 
 const Product = ({product}) => {
-    const{name,rating,country,images,price} = product;
+    const{name,rating,country,images,price,_id} = product;
     return (
         <>
             <div className='mt-2'>
@@ -28,9 +29,9 @@ const Product = ({product}) => {
                                 />
                             </h6>
                             <p className='fw-normal text-start'>{country}</p>
-                            {/* <Link to={`/order/${_id}`}> */}
+                            <Link to={`product/${_id}`}>
                             <button className="btn-style btn btn-primary badge rounded-pill bg-primary">shop Now</button>
-                            {/* </Link> */}
+                            </Link>
                         </div>
                     </div>
                 </div>

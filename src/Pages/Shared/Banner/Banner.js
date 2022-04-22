@@ -18,8 +18,8 @@ const Banner = () => {
                         <Navbar.Brand href="#home">
                             <img
                                 src={eid}
-                                width="60"
-                                height="60"
+                                width="50"
+                                height="50"
                                 style={{ borderRadius: '50%' }}
                                 className="d-inline-block align-top"
                                 alt="React Bootstrap logo"
