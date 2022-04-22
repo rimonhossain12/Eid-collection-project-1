@@ -43,10 +43,9 @@ const AddProduct = () => {
                     <input placeholder='product price' required className='form-control' {...register("price")} />
                     <input placeholder='product Rating' required className='form-control' {...register("rating")} />
                     <input placeholder='product country' required className='form-control' {...register("country")} />
-                    <button type="submit"  required className="btn btn-secondary w-50 mt-3">Submit</button>
+                    <button type="submit" required className="btn btn-secondary w-50 mt-3">Submit</button>
                 </form>
             </div>
-
             <>
                 <Modal
                     show={show}

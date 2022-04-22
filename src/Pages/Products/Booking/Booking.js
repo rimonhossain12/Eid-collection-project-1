@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Card, Col, Container, Row } from 'react-bootstrap';
+import { useForm } from "react-hook-form";
 import ReactStars from 'react-rating-stars-component';
 import { useParams } from 'react-router-dom';
 import Banner from '../../Shared/Banner/Banner';
@@ -7,6 +7,8 @@ import Banner from '../../Shared/Banner/Banner';
 const Booking = () => {
     const { productId } = useParams();
     const [product, setProduct] = useState([]);
+    const { register, handleSubmit } = useForm();
+    const onSubmit = data => console.log(data);
 
     useEffect(() => {
         fetch(`http://localhost:5000/product/${productId}`)
@@ -53,7 +55,16 @@ const Booking = () => {
                         </div>
                     </div>
                     <div class="ol-sm-12 col-md-7">
-
+                        <div className='form-div'>
+                            <form onSubmit={handleSubmit(onSubmit)}>
+                                <input placeholder='product name' required className='form-control w-75'{...register("name")} />
+                                <input placeholder='product images' required className='form-control w-75'{...register("images")} />
+                                <input placeholder='product price' required className='form-control w-75' {...register("price")} />
+                                <input placeholder='product Rating' required className='form-control w-75' {...register("rating")} />
+                                <input placeholder='product country' required className='form-control w-75' {...register("country")} />
+                                <button type="submit" required className="btn btn-secondary w-75 mt-3">Submit</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
