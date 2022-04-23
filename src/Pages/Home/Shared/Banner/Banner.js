@@ -1,13 +1,13 @@
 import React from 'react';
 import { Container, Nav, Navbar } from 'react-bootstrap';
-import eid from '../../../images/site-images/eid2.jpg';
+import eidLogo from '../../../../images/site-images/eid2.jpg';
 import { HashLink } from 'react-router-hash-link';
 import './Banner.css';
 import { Carousel } from 'react-bootstrap';
-import img1 from '../../../images/carousel/1.jpg';
-import img2 from '../../../images/carousel/2.jpg';
-import img3 from '../../../images/carousel/3.jpg';
-import img4 from '../../../images/carousel/4.jpg';
+import img1 from '../../../../images/carousel/1.jpg';
+import img2 from '../../../../images/carousel/2.jpg';
+import img3 from '../../../../images/carousel/3.jpg';
+import img4 from '../../../../images/carousel/4.jpg';
 
 const Banner = () => {
     return (
@@ -17,7 +17,7 @@ const Banner = () => {
                     <Container>
                         <Navbar.Brand href="#home">
                             <img
-                                src={eid}
+                                src={eidLogo}
                                 width="50"
                                 height="50"
                                 style={{ borderRadius: '50%' }}
