@@ -38,6 +38,7 @@ const Banner = () => {
                                         < Nav.Link as={HashLink} to="/login#login" style={{ color: 'white' }}>Login</Nav.Link>
 
                                 }
+                                
                                 <Nav.Link as={HashLink} to="/register#register" style={{ color: 'white' }}>Register</Nav.Link>
                             </Nav>
                         </Navbar.Collapse>

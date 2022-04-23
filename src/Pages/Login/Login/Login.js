@@ -20,8 +20,9 @@ const Login = () => {
         e.preventDefault();
     }
     return (
-       <Container className="mt-5">
-            <Row xs={1} md={2}>
+      <div className='login-body'>
+            <Container className="">
+                {/* <Row xs={1} md={2}>
                 <div>      
                     <p>Please Login</p>
                     <Form onSubmit={handleOnSubmit}>
@@ -47,8 +48,31 @@ const Login = () => {
                 <div className='mt-3'>
                     <img src={login} className="img-fluid" alt="" />
                 </div>
-           </Row>
-       </Container>
+           </Row> */}
+                <div className='center'>
+                    <h1>Login</h1>
+                    <form method='post'>
+                        <div className='txt_field'>
+                            <input type="text" required />
+                            <span></span>
+                            <label>Username</label>
+                        </div>
+                        <div className='txt_field'>
+                            <input type="password" required />
+                            <span></span>
+                            <label>password</label>
+                        </div>
+                        <div className='pass'>
+                            Forget Password
+                        </div>
+                        <input id='input-submit' type="submit" value="login" />
+                        <div className='signup_link'>
+                            Not a memeber <a href="#www"> singUp</a>
+                        </div>
+                    </form>
+                </div>
+            </Container>            
+      </div>
     );
 };
 
