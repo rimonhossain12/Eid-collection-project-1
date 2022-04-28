@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import { Container } from 'react-bootstrap';
 import './Login.css';
 import { NavLink } from 'react-router-dom';
+import useAuth from '../../../hooks/useAuth';
 
 const Login = () => {
     const [loginData, setLoginData] = useState({});
+    const { loginUser} = useAuth();
 
     const handleOnBlur = ( e ) => {
         const field = e.target.name;
@@ -16,6 +18,7 @@ const Login = () => {
    
     const handleOnSubmit = ( e ) => {
         console.log(loginData.email, loginData.password);
+        loginUser(loginData.email,loginData.password);
         e.preventDefault();
     }
     return (

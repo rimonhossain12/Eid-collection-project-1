@@ -13,15 +13,12 @@ const useFirebase = () => {
     const auth = getAuth();
 
     // sign in email and password
-    const registerUser = (email, password,name) => {
-        console.log(email,password);
+    const registerUser = (email, password, name) => {
+        console.log(email, password);
         setIsLoading(true);
         createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 setError('');
-                // const newUser = {email, displayName:name};
-                // setUser(newUser);
-                
             })
             .catch((error) => {
                 setError(error.message);
@@ -35,6 +32,7 @@ const useFirebase = () => {
         signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 setError('');
+                // useLocation()
             })
             .catch((error) => {
                 setError(error.message);
@@ -54,14 +52,13 @@ const useFirebase = () => {
 
     // observe user
     useEffect(() => {
-        const unsubscribed = onAuthStateChanged(auth, (user) => {
+         onAuthStateChanged(auth, (user) => {
             if (user) {
                 setUser(user);
             } else {
                 setUser({});
             }
             setIsLoading(false);
-            return unsubscribed;
         });
     }, [auth])
 

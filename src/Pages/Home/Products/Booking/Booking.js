@@ -2,10 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { useForm } from "react-hook-form";
 import ReactStars from 'react-rating-stars-component';
 import { useParams } from 'react-router-dom';
+import useAuth from '../../../../hooks/useAuth';
 import Banner from '../../Shared/Banner/Banner';
 // import './Booking.css';
 
 const Booking = () => {
+    const {user} = useAuth();
+    console.log('user found',user.email);
     const { productId } = useParams();
     const [product, setProduct] = useState([]);
     const { register, handleSubmit } = useForm();

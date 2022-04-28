@@ -1,33 +1,33 @@
 import React, { useState } from 'react';
 import { Container, Form } from 'react-bootstrap';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
 import './Register.css';
 
 const Register = () => {
-    const [registerData,setRegisterData] = useState({});
-    const {registerUser} = useAuth();
+    const [registerData, setRegisterData] = useState({});
+    const { registerUser } = useAuth();
 
-    const handleOnBlur = ( e ) => {
+    const handleOnBlur = (e) => {
         const field = e.target.name;
         const value = e.target.value;
-        const newRegisterData = {...registerData};
+        const newRegisterData = { ...registerData };
         newRegisterData[field] = value;
         setRegisterData(newRegisterData);
     }
 
-    const handleOnSubmit = ( e ) => {
+    const navigate = useNavigate();
+
+    const handleOnSubmit = (e) => {
         console.log(registerData.email, registerData.password, registerData.password2);
-        if(registerData.password !== registerData.password2){
+        if (registerData.password !== registerData.password2) {
             alert('Please Type Correct Password');
             e.preventDefault();
             return;
         }
-       registerUser(registerData.email,registerData.password);
-    //    reset
-        console.log(registerData.email, registerData.password, registerData.password2);
+        registerUser(registerData.email, registerData.password, navigate);
         e.preventDefault();
-       
+
     }
     return (
         <div>
@@ -57,7 +57,7 @@ const Register = () => {
                             <button type='submit' id="input-submit">Register</button>
                             {/* <input id='input-submit' type="submit"  /> */}
                             <div className='signup_link'>
-                                <NavLink to="/login" id='nav-style' style={{textDecoration:'none'}}>Already Register? Please Login</NavLink>
+                                <NavLink to="/login" id='nav-style' style={{ textDecoration: 'none' }}>Already Register? Please Login</NavLink>
                             </div>
                         </Form>
                     </div>
