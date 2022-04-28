@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import ReactStars from 'react-rating-stars-component';
 import { useParams } from 'react-router-dom';
 import Banner from '../../Shared/Banner/Banner';
+// import './Booking.css';
 
 const Booking = () => {
     const { productId } = useParams();

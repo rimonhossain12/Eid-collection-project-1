@@ -51,16 +51,6 @@ const Register = () => {
                                 <span></span>
                                 <label>ReType password</label>
                             </div>
-                            {/* <div className='txt_field'>
-                                <input type="password" name='password' onBlur={handleOnBlur} />
-                                <span></span>
-                                <label>password</label>
-                            </div>
-                            <div className='txt_field'>
-                                <input type="password" name='password2' onBlur={handleOnBlur} />
-                                <span></span>
-                                <label>password</label>
-                            </div> */}
                             <div className='pass'>
                                 Forget Password
                             </div>
@@ -74,36 +64,6 @@ const Register = () => {
                 </Container>
             </div>
         </div>
-        // <div className='container mt-5'>            
-        //     <h4>Please Register</h4>
-        //    <div className='mx-auto'>
-        //         <Form onSubmit={handleOnSubmit}>
-        //             <input type="email"
-        //                 className="form-control mb-2"
-        //                 placeholder="your email"
-        //                 name='email'
-        //                 style={{ width: '25%' }}
-        //                 onBlur={handleOnBlur}
-        //             />
-        //             <input type="password"
-        //                 className="form-control mb-2"
-        //                 placeholder="your password"
-        //                 name="password"
-        //                 style={{ width: '25%' }}
-        //                 onBlur={handleOnBlur}
-        //             />
-        //             <input type="password"
-        //                 className="form-control mb-2"
-        //                 placeholder="ReType your password"
-        //                 name="password2"
-        //                 style={{ width: '25%' }}
-        //                 onBlur={handleOnBlur}
-        //             />
-        //             <button className='btn btn-primary'>Register</button>
-        //         </Form>
-        //    </div>
-        //     <NavLink to="/login">Already Register? Please Login</NavLink>
-        // </div>
     );
 };
 

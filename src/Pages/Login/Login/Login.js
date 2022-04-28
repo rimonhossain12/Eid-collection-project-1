@@ -38,7 +38,6 @@ const Login = () => {
                             Forget Password
                         </div>
                         <button type='submit' id='input-submit'>Login</button>
-                        {/* <input id='input-submit' type="submit" value="login" /> */}
                         <div className='signup_link'>
                             <NavLink to="/register" id='nav-style' style={{textDecoration:'none'}}>New User? Please Register</NavLink>
                         </div>
