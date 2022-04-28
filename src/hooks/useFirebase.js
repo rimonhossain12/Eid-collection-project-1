@@ -1,6 +1,5 @@
 import { getAuth, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { useEffect, useState } from "react";
-import { Navigate } from "react-router-dom";
 import initializeAuthentication from "../Pages/Login/Firebase/firebase.init";
 
 initializeAuthentication();
@@ -29,12 +28,13 @@ const useFirebase = () => {
     }
 
     // login user with email and password
-    const loginUser = (email, password) => {
+    const loginUser = (email, password,location,navigate) => {
         setIsLoading(true);
         signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
+                const destination = location?.state?.from || '/';
+                navigate(destination);
                 setError('');
-                // useLocation()
             })
             .catch((error) => {
                 setError(error.message);

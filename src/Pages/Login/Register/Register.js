@@ -1,21 +1,26 @@
 import React, { useState } from 'react';
 import { Container, Form } from 'react-bootstrap';
-import { NavLink, useLocation, useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
+import { useForm } from "react-hook-form";
 import './Register.css';
+
 
 const Register = () => {
     const [registerData, setRegisterData] = useState({});
     const { registerUser } = useAuth();
+    const { reset } = useForm();
 
     const navigate = useNavigate();
-    const handleOnBlur = (e) => {
+
+    const handleOnChange = (e) => {
         const field = e.target.name;
         const value = e.target.value;
-        const newRegisterData = { ...registerData };
-        newRegisterData[field] = value;
-        setRegisterData(newRegisterData);
+        const newLoginData = { ...registerData };
+        newLoginData[field] = value;
+        setRegisterData(newLoginData);
     }
+
     const handleOnSubmit = (e) => {
         console.log(registerData.email, registerData.password, registerData.password2);
         if (registerData.password !== registerData.password2) {
@@ -24,6 +29,7 @@ const Register = () => {
             return;
         }
         registerUser(registerData.email, registerData.password,navigate);
+        reset();
         e.preventDefault();
 
     }
@@ -35,17 +41,17 @@ const Register = () => {
                         <h1>Register</h1>
                         <Form onSubmit={handleOnSubmit}>
                             <div className='txt_field'>
-                                <input type="email" name='email' onBlur={handleOnBlur} required />
+                                <input type="email" name='email' onChange={handleOnChange} required />
                                 <span></span>
                                 <label>Your Email</label>
                             </div>
                             <div className='txt_field'>
-                                <input type="password" name='password' onBlur={handleOnBlur} required />
+                                <input type="password" name='password' onChange={handleOnChange} required />
                                 <span></span>
                                 <label>Your Password</label>
                             </div>
                             <div className='txt_field'>
-                                <input type="password" name='password2' onBlur={handleOnBlur} required />
+                                <input type="password" name='password2' onChange={handleOnChange} required />
                                 <span></span>
                                 <label>ReType password</label>
                             </div>

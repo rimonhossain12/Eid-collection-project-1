@@ -1,14 +1,21 @@
 import React, { useState } from 'react';
 import { Container } from 'react-bootstrap';
 import './Login.css';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
+import { useForm } from "react-hook-form";
+
 
 const Login = () => {
     const [loginData, setLoginData] = useState({});
     const { loginUser} = useAuth();
+    const { reset } = useForm();
 
-    const handleOnBlur = ( e ) => {
+    const location = useLocation();
+    const navigate = useNavigate();
+
+
+    const handleOnChange = ( e ) => {
         const field = e.target.name;
         const value = e.target.value;
         const newLoginData = { ...loginData};
@@ -17,8 +24,10 @@ const Login = () => {
     }
    
     const handleOnSubmit = ( e ) => {
-        console.log(loginData.email, loginData.password);
-        loginUser(loginData.email,loginData.password);
+        console.log('from login page',loginData.email, loginData.password);
+        loginUser(loginData.email,loginData.password,location,navigate);
+        console.log('location and navigate',location,navigate);
+        reset()
         e.preventDefault();
     }
     return (
@@ -28,12 +37,12 @@ const Login = () => {
                     <h1>Login</h1>
                     <form onSubmit={handleOnSubmit}>
                         <div className='txt_field'>
-                            <input type="email" name="email" onBlur={handleOnBlur} required />
+                            <input type="email" name="email" onChange={handleOnChange} required />
                             <span></span>
                             <label>Your Email</label>
                         </div>
                         <div className='txt_field'>
-                            <input type="password" name="password" onBlur={handleOnBlur} required />
+                            <input type="password" name="password" onChange={handleOnChange} required />
                             <span></span>
                             <label>Password</label>
                         </div>
