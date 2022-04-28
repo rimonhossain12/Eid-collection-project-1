@@ -1,5 +1,6 @@
 import { getAuth, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { useEffect, useState } from "react";
+import { Navigate } from "react-router-dom";
 import initializeAuthentication from "../Pages/Login/Firebase/firebase.init";
 
 initializeAuthentication();
@@ -13,12 +14,13 @@ const useFirebase = () => {
     const auth = getAuth();
 
     // sign in email and password
-    const registerUser = (email, password, name) => {
+    const registerUser = (email, password, navigate) => {
         console.log(email, password);
         setIsLoading(true);
         createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 setError('');
+                navigate('/')
             })
             .catch((error) => {
                 setError(error.message);

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Container, Form } from 'react-bootstrap';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
 import './Register.css';
 
@@ -8,6 +8,7 @@ const Register = () => {
     const [registerData, setRegisterData] = useState({});
     const { registerUser } = useAuth();
 
+    const navigate = useNavigate();
     const handleOnBlur = (e) => {
         const field = e.target.name;
         const value = e.target.value;
@@ -15,9 +16,6 @@ const Register = () => {
         newRegisterData[field] = value;
         setRegisterData(newRegisterData);
     }
-
-    const navigate = useNavigate();
-
     const handleOnSubmit = (e) => {
         console.log(registerData.email, registerData.password, registerData.password2);
         if (registerData.password !== registerData.password2) {
@@ -25,7 +23,7 @@ const Register = () => {
             e.preventDefault();
             return;
         }
-        registerUser(registerData.email, registerData.password, navigate);
+        registerUser(registerData.email, registerData.password,navigate);
         e.preventDefault();
 
     }
