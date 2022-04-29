@@ -8,30 +8,41 @@ import { useForm } from "react-hook-form";
 
 const Login = () => {
     const [loginData, setLoginData] = useState({});
-    const { loginUser} = useAuth();
+    const { loginUser, googleLoginSystem, githubLoginSystem } = useAuth();
     const { reset } = useForm();
 
     const location = useLocation();
     const navigate = useNavigate();
 
 
-    const handleOnChange = ( e ) => {
+    const handleOnChange = (e) => {
         const field = e.target.name;
         const value = e.target.value;
-        const newLoginData = { ...loginData};
+        const newLoginData = { ...loginData };
         newLoginData[field] = value;
         setLoginData(newLoginData);
     }
-   
-    const handleOnSubmit = ( e ) => {
-        console.log('from login page',loginData.email, loginData.password);
-        loginUser(loginData.email,loginData.password,location,navigate);
-        console.log('location and navigate',location,navigate);
+
+    const handleOnSubmit = (e) => {
+        console.log('from login page', loginData.email, loginData.password);
+        loginUser(loginData.email, loginData.password, location, navigate);
+        console.log('location and navigate', location, navigate);
         reset()
         e.preventDefault();
     }
+
+    // handle google login
+    const handleGoogleLogin = (e) => {
+        googleLoginSystem(location, navigate);
+    }
+
+    // handle github login
+    const handleGithubButton = (e) => {
+        githubLoginSystem(location, navigate);
+    }
+
     return (
-      <div className='login-body'>
+        <div className='login-body'>
             <Container className="">
                 <div className='center'>
                     <h1>Login</h1>
@@ -46,17 +57,18 @@ const Login = () => {
                             <span></span>
                             <label>Password</label>
                         </div>
-                        <div className='pass'>
-                            Forget Password
+                        <div className='pass' >
+                            <img style={{ width: '10%' }} onClick={() => handleGoogleLogin()} className="img-fluid" src='https://i.ibb.co/8zHhKP2/download.jpg' alt="" />
+                            <img style={{ width: '20%' }} onClick={() => handleGithubButton()} className="img-fluid" src='https://i.ibb.co/mSVN5Wk/download.png' alt="" />
                         </div>
                         <button type='submit' id='input-submit'>Login</button>
                         <div className='signup_link'>
-                            <NavLink to="/register" id='nav-style' style={{textDecoration:'none'}}>New User? Please Register</NavLink>
+                            <NavLink to="/register" id='nav-style' style={{ textDecoration: 'none' }}>New User? Please Register</NavLink>
                         </div>
                     </form>
                 </div>
-            </Container>            
-      </div>
+            </Container>
+        </div>
     );
 };
 

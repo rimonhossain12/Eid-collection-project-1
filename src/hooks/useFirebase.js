@@ -1,4 +1,4 @@
-import { getAuth, onAuthStateChanged, createUserWithEmailAndPassword, updateProfile, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { getAuth, onAuthStateChanged, createUserWithEmailAndPassword, GithubAuthProvider, updateProfile, signInWithEmailAndPassword, signOut, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { useEffect, useState } from "react";
 import initializeAuthentication from "../Pages/Login/Firebase/firebase.init";
 
@@ -11,14 +11,16 @@ const useFirebase = () => {
 
 
     const auth = getAuth();
+    const googleProvider = new GoogleAuthProvider();
+    const githubProvider = new GithubAuthProvider();
 
     // sign in email and password
-    const registerUser = (userName,email, password, navigate) => {
-        console.log('user register data',email, password,userName);
+    const registerUser = (userName, email, password, navigate) => {
+        console.log('user register data', email, password, userName);
         setIsLoading(true);
         createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
-                const updatedUser = {email, displayName:userName}
+                const updatedUser = { email, displayName: userName }
                 setUser(updatedUser);
                 updateProfile(auth.currentUser, {
                     displayName: userName
@@ -35,7 +37,7 @@ const useFirebase = () => {
     }
 
     // login user with email and password
-    const loginUser = (email, password,location,navigate) => {
+    const loginUser = (email, password, location, navigate) => {
         setIsLoading(true);
         signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
@@ -46,6 +48,36 @@ const useFirebase = () => {
             .catch((error) => {
                 setError(error.message);
             }).finally(() => setIsLoading(false));
+    }
+
+    // sign in with google
+    const googleLoginSystem = (location, navigate) => {
+        setIsLoading(true)
+        signInWithPopup(auth, googleProvider)
+            .then((result) => {
+                const user = result.user;
+                setUser(user);
+                setError('');
+                const destination = location?.state?.from || '/';
+                navigate(destination);
+            }).catch((error) => {
+                setError(error.message);
+            }).finally(() => setIsLoading(false));
+
+    }
+
+    // sign in with github
+    const githubLoginSystem = (location,navigate) => {
+        signInWithPopup(auth, githubProvider)
+            .then((result) => {
+                const user = result.user;
+                setUser(user);
+                setError('');
+                const destination = location?.state?.from || '/';
+                navigate(destination);
+            }).catch((error) => {
+                setError(error.message);
+            });
     }
 
     // logout 
@@ -61,7 +93,7 @@ const useFirebase = () => {
 
     // observe user
     useEffect(() => {
-         onAuthStateChanged(auth, (user) => {
+        onAuthStateChanged(auth, (user) => {
             if (user) {
                 setUser(user);
             } else {
@@ -77,7 +109,9 @@ const useFirebase = () => {
         error,
         isLoading,
         user,
-        logOut
+        logOut,
+        googleLoginSystem,
+        githubLoginSystem
     }
 
 }

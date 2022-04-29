@@ -20,6 +20,7 @@ function App() {
             <Route path='/home' element={<Home />} />
             <Route path='/addProduct' element={<AddProduct />} />
             <Route path='/products/' element={<Products />}></Route>
+            {/* <Route path='/m'></Route> */}
 
             <Route
               path='/order/:productId'
@@ -29,7 +30,6 @@ function App() {
                 </PrivateRouter>
               }
             />
-
             <Route path='/login' element={<Login />}></Route>
             <Route path='/register' element={<Register />}></Route>
           </Routes>

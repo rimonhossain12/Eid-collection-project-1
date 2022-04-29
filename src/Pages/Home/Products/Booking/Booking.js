@@ -9,9 +9,9 @@ import './Booking.css';
 const Booking = () => {
     const { user } = useAuth();
     console.log('user found', user.email);
+    const { reset } = useForm();
     const { productId } = useParams();
     const [product, setProduct] = useState([]);
-    const [orderProduct, setOrderProduct] = useState({});
     const { register, handleSubmit } = useForm();
 
     useEffect(() => {
@@ -27,14 +27,12 @@ const Booking = () => {
     const onSubmit = data => {
         const newData = {
             ...data,
-            productName:product.name,
-            productRating:product.rating,
-            productImg:product.images,
-            price:product.price
+            productName: product.name,
+            productRating: product.rating,
+            productImg: product.images,
+            price: product.price
         }
-        console.log(newData);
-        setOrderProduct(newData);
-        console.log(orderProduct);
+
         fetch('http://localhost:5000/order', {
             method: 'POST',
             headers: {
@@ -45,8 +43,9 @@ const Booking = () => {
             .then(res => res.json())
             .then(data => {
                 console.log(data);
-                if (data.insertedId){
-                    
+                if (data.insertedId) {
+                    alert('Thank you for your orders');
+                    reset();
                 }
             }
             );
