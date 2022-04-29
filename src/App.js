@@ -10,7 +10,6 @@ import Products from './Pages/Home/Products/Products/Products';
 import PrivateRouter from './Pages/Login/PrivateRoute/PrivateRouter';
 import DashBoardHome from './Pages/DashBoard/DashBoardHome/DashBoardHome';
 
-
 function App() {
   return (
     <div className="App">
@@ -22,7 +21,6 @@ function App() {
             <Route path='/addProduct' element={<AddProduct />} />
             <Route path='/products/' element={<Products />}></Route>
             <Route path='/DashBoard' element={<DashBoardHome/> }/>
-
             <Route
               path='/order/:productId'
               element={
@@ -31,6 +29,11 @@ function App() {
                 </PrivateRouter>
               }
             />
+            {/* <Route path="/DashBoard" element={<DashBoardHome />}>
+              <Route path="/MyOrders" element={<UserOrders />} />
+              <Route path="/AllOrders" element={<AllOrders />} />
+            </Route> */}
+
             <Route path='/login' element={<Login />}></Route>
             <Route path='/register' element={<Register />}></Route>
           </Routes>
