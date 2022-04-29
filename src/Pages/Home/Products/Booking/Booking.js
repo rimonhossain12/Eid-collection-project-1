@@ -1,4 +1,3 @@
-import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useForm } from "react-hook-form";
 import ReactStars from 'react-rating-stars-component';
@@ -12,7 +11,7 @@ const Booking = () => {
     console.log('user found', user.email);
     const { productId } = useParams();
     const [product, setProduct] = useState([]);
-    // const [orderProduct,setOrderProduct] = useState([]);
+    const [orderProduct, setOrderProduct] = useState({});
     const { register, handleSubmit } = useForm();
 
     useEffect(() => {
@@ -27,23 +26,28 @@ const Booking = () => {
 
     const onSubmit = data => {
         const newData = {
-            productName: product.name,
-            productImg: product.images,
-            productPrice: product.price,
-            productRating: product.rating,
-            productCountry: product.country
+            ...data,
+            productName:product.name,
+            productRating:product.rating,
+            productImg:product.images,
+            price:product.price
         }
-
+        console.log(newData);
+        setOrderProduct(newData);
+        console.log(orderProduct);
         fetch('http://localhost:5000/order', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify(data)
+            body: JSON.stringify(newData)
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
+                console.log(data);
+                if (data.insertedId){
+                    
+                }
             }
             );
     };
