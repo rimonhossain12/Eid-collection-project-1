@@ -1,7 +1,4 @@
 import React from 'react';
-import { Container, Nav, Navbar } from 'react-bootstrap';
-import eidLogo from '../../../../images/site-images/eid2.jpg';
-import { HashLink } from 'react-router-hash-link';
 import './Banner.css';
 import { Carousel } from 'react-bootstrap';
 import img1 from '../../../../images/carousel/1.jpg';
@@ -9,41 +6,15 @@ import img2 from '../../../../images/carousel/2.jpg';
 import img3 from '../../../../images/carousel/3.jpg';
 import img4 from '../../../../images/carousel/4.jpg';
 import useAuth from '../../../../hooks/useAuth';
+import NavbarBanner from '../Navbar/NavbarBanner';
 
 const Banner = () => {
-    const { user, logOut } = useAuth();
+    const { user } = useAuth();
     console.log('email found', user.email);
     return (
         <div>
-            <>
-                <Navbar bg="dark" variant="dark" expand="lg">
-                    <Container>
-                        <Navbar.Brand href="#home">
-                            <img
-                                src={eidLogo}
-                                width="50"
-                                height="50"
-                                style={{ borderRadius: '50%' }}
-                                className="d-inline-block align-top"
-                                alt="React Bootstrap logo"
-                            />
-                        </Navbar.Brand>
-                        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                        <Navbar.Collapse id="basic-navbar-nav">
-                            <Nav className="ms-auto">
-                                <Nav.Link as={HashLink} to="/home#home" style={{ color: 'white' }}>Home</Nav.Link>
-                                <Nav.Link as={HashLink} to="/products#products" style={{ color: 'white' }}>Products</Nav.Link>
-                                <Nav.Link as={HashLink} to="/AddProduct#AddProduct" style={{ color: 'white' }}>AddProduct</Nav.Link>
-                               {
-                                    user.email ? <Nav.Link onClick={logOut} style={{ color: 'white' }}>LogOut</Nav.Link> : 
-                                        <Nav.Link as={HashLink} to="/register#register" style={{ color: 'white' }}>Login</Nav.Link>
-                               }
-                               <p style={{color:'white'}}>{user.displayName}</p>
-                            </Nav>
-                        </Navbar.Collapse>
-                    </Container>
-                </Navbar>
-
+            <>             
+            <NavbarBanner/>
                 <Carousel fade>
                     <Carousel.Item>
                         <img

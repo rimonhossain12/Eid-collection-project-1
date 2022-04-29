@@ -8,6 +8,7 @@ import AuthProvider from './Context/AuthProvider/AuthProvider';
 import AddProduct from './Pages/Home/AddProduct/AddProduct';
 import Products from './Pages/Home/Products/Products/Products';
 import PrivateRouter from './Pages/Login/PrivateRoute/PrivateRouter';
+import DashBoardHome from './Pages/DashBoard/DashBoardHome/DashBoardHome';
 
 
 function App() {
@@ -20,7 +21,7 @@ function App() {
             <Route path='/home' element={<Home />} />
             <Route path='/addProduct' element={<AddProduct />} />
             <Route path='/products/' element={<Products />}></Route>
-            {/* <Route path='/m'></Route> */}
+            <Route path='/DashBoard' element={<DashBoardHome/> }/>
 
             <Route
               path='/order/:productId'
