@@ -1,18 +1,19 @@
+import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useForm } from "react-hook-form";
 import ReactStars from 'react-rating-stars-component';
 import { useParams } from 'react-router-dom';
 import useAuth from '../../../../hooks/useAuth';
 import Banner from '../../Shared/Banner/Banner';
-// import './Booking.css';
+import './Booking.css';
 
 const Booking = () => {
-    const {user} = useAuth();
-    console.log('user found',user.email);
+    const { user } = useAuth();
+    console.log('user found', user.email);
     const { productId } = useParams();
     const [product, setProduct] = useState([]);
+    // const [orderProduct,setOrderProduct] = useState([]);
     const { register, handleSubmit } = useForm();
-    const onSubmit = data => console.log(data);
 
     useEffect(() => {
         fetch(`http://localhost:5000/product/${productId}`)
@@ -22,6 +23,30 @@ const Booking = () => {
                 console.log(data);
             })
     }, [productId])
+
+
+    const onSubmit = data => {
+        const newData = {
+            productName: product.name,
+            productImg: product.images,
+            productPrice: product.price,
+            productRating: product.rating,
+            productCountry: product.country
+        }
+
+        fetch('http://localhost:5000/order', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+            }
+            );
+    };
 
     return (
         <>
@@ -35,7 +60,7 @@ const Booking = () => {
                                     <div className="image text-start">
                                         <div id="zoom-In">
                                             <figure>
-                                                <img id="img-style" src={product.images} className='img-fluid' style={{ width: '100%' }} alt="" />
+                                                <img id="booking-img-style" src={product.images} className='img-fluid' style={{ width: '100%' }} alt="" />
                                             </figure>
                                             <h5 className="fw-lighter" style={{ color: '#22789A' }}>{product.name}</h5>
                                             <p className='fw-normal text-start'>{product.price}</p>
@@ -61,11 +86,13 @@ const Booking = () => {
                     <div class="ol-sm-12 col-md-7">
                         <div className='form-div'>
                             <form onSubmit={handleSubmit(onSubmit)}>
-                                <input placeholder='product name' required className='form-control w-75'{...register("name")} />
-                                <input placeholder='product images' required className='form-control w-75'{...register("images")} />
-                                <input placeholder='product price' required className='form-control w-75' {...register("price")} />
-                                <input placeholder='product Rating' required className='form-control w-75' {...register("rating")} />
-                                <input placeholder='product country' required className='form-control w-75' {...register("country")} />
+                                <input placeholder='user name' defaultValue={user.displayName} required className='form-control w-75'{...register("name")} />
+                                <input placeholder='user email' required defaultValue={user.email} className='form-control w-75'{...register("images")} />
+                                <input placeholder='product price' defaultValue={product.price} className='form-control w-75'{...register("price")} />
+                                <input placeholder='product quantity' type="number" required className='form-control w-75' {...register("quantity")} />
+                                <input placeholder='Your phone number' required className='form-control w-75' {...register("mobile")} />
+                                <input placeholder='Your district' required className='form-control w-75' {...register("District")} />
+                                <textarea placeholder='Your full address' required className='form-control w-75' {...register("Present Address")} />
                                 <button type="submit" required className="btn btn-secondary w-75 mt-3">Submit</button>
                             </form>
                         </div>

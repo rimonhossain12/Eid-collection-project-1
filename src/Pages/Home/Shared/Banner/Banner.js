@@ -38,7 +38,7 @@ const Banner = () => {
                                     user.email ? <Nav.Link onClick={logOut} style={{ color: 'white' }}>LogOut</Nav.Link> : 
                                         <Nav.Link as={HashLink} to="/register#register" style={{ color: 'white' }}>Login</Nav.Link>
                                }
-                               <p style={{color:'white'}}>{user.email}</p>
+                               <p style={{color:'white'}}>{user.displayName}</p>
                             </Nav>
                         </Navbar.Collapse>
                     </Container>

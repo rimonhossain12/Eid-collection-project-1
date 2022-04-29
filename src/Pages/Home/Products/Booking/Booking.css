@@ -1,0 +1,17 @@
+.form-div{
+    display: block;
+}
+.form-div input, textarea{
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    width: 50%;
+}
+
+#booking-img-style{
+    height: 300px;    
+    width: 100%;
+    transition: all .5s;
+    border-radius: 2px;
+}

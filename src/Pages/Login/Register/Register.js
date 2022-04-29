@@ -8,7 +8,7 @@ import './Register.css';
 
 const Register = () => {
     const [registerData, setRegisterData] = useState({});
-    const { registerUser } = useAuth();
+    const { registerUser, error } = useAuth();
     const { reset } = useForm();
 
     const navigate = useNavigate();
@@ -28,7 +28,8 @@ const Register = () => {
             e.preventDefault();
             return;
         }
-        registerUser(registerData.email, registerData.password,navigate);
+        registerUser(registerData.userName,registerData.email, registerData.password,navigate);
+        console.log(registerData.userName,registerData.email,registerData.password);
         reset();
         e.preventDefault();
 
@@ -40,6 +41,11 @@ const Register = () => {
                     <div className='center'>
                         <h1>Register</h1>
                         <Form onSubmit={handleOnSubmit}>
+                            <div className='txt_field'>
+                                <input type="text" name='userName' onChange={handleOnChange} required />
+                                <span></span>
+                                <label>Your Name</label>
+                            </div>
                             <div className='txt_field'>
                                 <input type="email" name='email' onChange={handleOnChange} required />
                                 <span></span>
@@ -54,6 +60,9 @@ const Register = () => {
                                 <input type="password" name='password2' onChange={handleOnChange} required />
                                 <span></span>
                                 <label>ReType password</label>
+                            </div>
+                            <div className='pass'>
+                                {error}
                             </div>
                             <div className='pass'>
                                 Forget Password
