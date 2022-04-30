@@ -6,6 +6,7 @@ const UserOrders = () => {
     const {user} = useAuth();
     
     const url = `http://localhost:5000/myOrders/${user.email}`;
+    console.log(url);
     useEffect(() =>{
         fetch(url)
         .then(res => res.json())
@@ -13,7 +14,7 @@ const UserOrders = () => {
             console.log(data);
             setMyOrders(data);
         })
-    },[user.email])
+    },[url])
 
     return (
         <div>

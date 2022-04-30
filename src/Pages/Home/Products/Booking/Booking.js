@@ -90,12 +90,12 @@ const Booking = () => {
                         <div className='form-div'>
                             <form onSubmit={handleSubmit(onSubmit)}>
                                 <input placeholder='user name' defaultValue={user.displayName} required className='form-control w-75'{...register("name")} />
-                                <input placeholder='user email' required defaultValue={user.email} className='form-control w-75'{...register("images")} />
+                                <input placeholder='user email' required defaultValue={user.email} className='form-control w-75'{...register("email")} />
                                 <input placeholder='product price' defaultValue={product.price} className='form-control w-75'{...register("price")} />
                                 <input placeholder='product quantity' type="number" required className='form-control w-75' {...register("quantity")} />
                                 <input placeholder='Your phone number' required className='form-control w-75' {...register("mobile")} />
                                 <input placeholder='Your district' required className='form-control w-75' {...register("District")} />
-                                <textarea placeholder='Your full address' required className='form-control w-75' {...register("Present Address")} />
+                                <textarea placeholder='Your full address' required className='form-control w-75' {...register("Present_Address")} />
                                 <button type="submit" required className="btn btn-secondary w-75 mt-3">Submit</button>
                             </form>
                         </div>
