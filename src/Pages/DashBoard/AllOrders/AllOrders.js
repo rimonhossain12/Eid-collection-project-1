@@ -8,9 +8,9 @@ const AllOrders = () => {
             .then(res => res.json())
             .then(data => {
                 setAllOrders(data);
-                // console.log(data);
+                console.log(data);
             })
-    }, [])
+    }, [allOrders])
 
     return (
         <div>
@@ -36,6 +36,7 @@ const AllOrders = () => {
                             <tr>
                                  <td key={order._id}><img style={{width:'100%', height:'50px'}} src={order.productImg} alt="" /></td>
                                  <td>{order.name}</td>
+                                 <td>{order._id}</td>
                                  <td>{order.email}</td>
                                  <td>{order.price}</td>
                                  <td>{order.Present_Address}</td>

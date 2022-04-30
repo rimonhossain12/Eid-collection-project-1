@@ -22,6 +22,7 @@ const useFirebase = () => {
             .then((userCredential) => {
                 const updatedUser = { email, displayName: userName }
                 setUser(updatedUser);
+                // savedUsers(email,displayName:userName,'POST');
                 updateProfile(auth.currentUser, {
                     displayName: userName
                 }).then(() => {
@@ -58,6 +59,7 @@ const useFirebase = () => {
                 const user = result.user;
                 setUser(user);
                 setError('');
+                savedUsers(user.email,user.displayName,'PUT');
                 const destination = location?.state?.from || '/';
                 navigate(destination);
             }).catch((error) => {
@@ -73,6 +75,7 @@ const useFirebase = () => {
                 const user = result.user;
                 setUser(user);
                 setError('');
+                savedUsers(user.email,user.displayName,'PUT');
                 const destination = location?.state?.from || '/';
                 navigate(destination);
             }).catch((error) => {
@@ -102,6 +105,24 @@ const useFirebase = () => {
             setIsLoading(false);
         });
     }, [auth])
+
+    // saved user to the database
+
+    const savedUsers = (email,displayName,method) => {
+       const user = {email,displayName}
+       console.log('user send',user);
+        fetch('http://localhost:5000/registerUsers',{
+            method:method,
+            headers:{
+                'content-type':'application/json'
+            },
+            body:JSON.stringify(user)
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+        })
+    }
 
     return {
         registerUser,
