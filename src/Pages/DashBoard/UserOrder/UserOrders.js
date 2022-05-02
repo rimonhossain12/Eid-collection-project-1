@@ -14,7 +14,11 @@ const UserOrders = () => {
             console.log(data);
             setMyOrders(data);
         })
-    },[url])
+    },[url]);
+
+    const handleDeleteButton = (id) => {
+        alert('Button is click')
+    }
 
     return (
         <div>
@@ -39,7 +43,7 @@ const UserOrders = () => {
                         <tbody>
                             {
                                 myOrders.map((order, index) => <>
-                                    <tr>
+                                    <tr key={order._id}>
                                         <td><img src={order.productImg} style={{ height: '50px', width: '100%' }} alt="product_img" /></td>
                                         <td>{order.productName}</td>
                                         <td>{order.price}</td>
@@ -49,7 +53,7 @@ const UserOrders = () => {
                                         <td>{order.Present_Address}</td>
                                         <td>{order.mobile}</td>
                                         <td className='text-center text-danger'>pending</td>
-                                        <button className='btn btn-danger'>cancel</button>
+                                        <button className='btn btn-danger' onClick={() => handleDeleteButton(order._id)}>cancel</button>
                                     </tr>
                                 </>)
                             }

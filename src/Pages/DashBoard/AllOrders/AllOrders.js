@@ -14,6 +14,9 @@ const AllOrders = () => {
             });
     }, [])
 
+    const handleDeleteButton = (id) => {
+        alert('Button is click')
+    }
 
 
     return (
@@ -49,7 +52,7 @@ const AllOrders = () => {
                                         <td>{order.Present_Address}</td>
                                         <td>{order.mobile}</td>
                                         <td className='text-center text-danger'>pending</td>
-                                       <button className='btn btn-danger'>cancel</button>
+                                        <button className='btn btn-danger' onClick={ () => handleDeleteButton(order._id)}>cancel</button>
                                     </tr>
                                 </>)
                             }
