@@ -19,38 +19,43 @@ const UserOrders = () => {
     return (
         <div>
             <h2>This is Single Orders: {myOrders.length}</h2>
-            <div className="table-responsive">
-                <table className="table" id="customer">
-                    <thead>
-                        <tr>
-                            <th>IMG</th>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Price</th>
-                            <th>Location</th>
-                            <th>Phone</th>
-                            <th>Quantity</th>
-                            <th>status</th>
-                            <th>Decision</th>
-                            {/* <td>something</td> */}
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            myOrders.map((order, index) => <>
-                                <tr>
-                                    <td key={order._id}><img style={{ width: '100%', height: '50px' }} src={order.productImg} alt="" /></td>
-                                    <td>{order.name}</td>
-                                    <td>{order.price}</td>
-                                    <td>{order.present_address}</td>
-                                    
-                                    <button type="button" className="btn btn-primary">Deletion</button>
-
-                                </tr>
-                            </>)
-                        }
-                    </tbody>
-                </table>
+            <div style={{ marginLeft: '50px' }} className="mt-3">
+                <div className='table-responsive'>
+                    <table id='customer'>
+                        <thead>
+                            <tr>
+                                <th>IMG</th>
+                                <th>ProductName</th>
+                                <th>price</th>
+                                <th>quantity</th>
+                                <th>userName</th>
+                                <th>Email</th>
+                                <th>Location </th>
+                                <th>Phone</th>
+                                <th>Status</th>
+                                <th>Decision</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                myOrders.map((order, index) => <>
+                                    <tr>
+                                        <td><img src={order.productImg} style={{ height: '50px', width: '100%' }} alt="product_img" /></td>
+                                        <td>{order.productName}</td>
+                                        <td>{order.price}</td>
+                                        <td>{order.quantity}</td>
+                                        <td>{order.name}</td>
+                                        <td>{order.email}</td>
+                                        <td>{order.Present_Address}</td>
+                                        <td>{order.mobile}</td>
+                                        <td className='text-center text-danger'>pending</td>
+                                        <button className='btn btn-danger'>cancel</button>
+                                    </tr>
+                                </>)
+                            }
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     );
