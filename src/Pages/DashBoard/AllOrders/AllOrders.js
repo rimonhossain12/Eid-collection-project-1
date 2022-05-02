@@ -3,14 +3,19 @@ import './AllOrders.css';
 
 const AllOrders = () => {
     const [allOrders, setAllOrders] = useState([]);
+
     useEffect(() => {
         fetch('http://localhost:5000/allOrders')
-            .then(res => res.json())
-            .then(data => {
-                setAllOrders(data);
-                console.log(data);
-            })
-    }, [allOrders])
+        .then(res => res.json())
+        .then(data => setAllOrders(data));
+    },[])
+    
+    // fetch('http://localhost:5000/allOrders')
+    // .then(res => res.json())
+    // .then(data => {
+    //     setAllOrders(data)
+    //     console.log(data);
+    // })
 
     return (
         <div>
