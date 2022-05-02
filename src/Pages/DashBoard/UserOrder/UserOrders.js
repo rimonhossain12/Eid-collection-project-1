@@ -2,19 +2,19 @@ import React, { useEffect, useState } from 'react';
 import useAuth from '../../../hooks/useAuth';
 
 const UserOrders = () => {
-    const [myOrders,setMyOrders] = useState([]);
-    const {user} = useAuth();
-    
+    const [myOrders, setMyOrders] = useState([]);
+    const { user } = useAuth();
+
     const url = `http://localhost:5000/myOrders/${user.email}`;
     console.log(url);
-    useEffect(() =>{
+    useEffect(() => {
         fetch(url)
-        .then(res => res.json())
-        .then(data => {
-            console.log(data);
-            setMyOrders(data);
-        })
-    },[url]);
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                setMyOrders(data);
+            })
+    }, [url]);
 
     const handleDeleteButton = (id) => {
         const productId = id;
@@ -39,6 +39,7 @@ const UserOrders = () => {
                                 <th>Phone</th>
                                 <th>Status</th>
                                 <th>Decision</th>
+                                <th>Update</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -54,7 +55,8 @@ const UserOrders = () => {
                                         <td>{order.Present_Address}</td>
                                         <td>{order.mobile}</td>
                                         <td className='text-center text-danger'>pending</td>
-                                        <button className='btn btn-danger' onClick={() => handleDeleteButton(order._id)}>cancel</button>
+                                        <td> <button className='btn btn-danger' onClick={() => handleDeleteButton(order._id)}>cancel</button></td>
+                                        <td><button className='btn btn-primary'>Edit</button></td>
                                     </tr>
                                 </>)
                             }

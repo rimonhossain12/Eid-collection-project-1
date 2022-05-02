@@ -22,13 +22,14 @@ const useFirebase = () => {
             .then((userCredential) => {
                 const updatedUser = { email, displayName: userName }
                 setUser(updatedUser);
+                savedUsers(email,userName,'POST');
+                setError('');
                 // savedUsers(email,displayName:userName,'POST');
                 updateProfile(auth.currentUser, {
                     displayName: userName
                 }).then(() => {
                 }).catch((error) => {
                 });
-                setError('');
                 navigate('/')
             })
             .catch((error) => {
