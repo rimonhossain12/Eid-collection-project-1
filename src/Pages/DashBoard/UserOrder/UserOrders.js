@@ -16,9 +16,27 @@ const UserOrders = () => {
             })
     }, [url]);
 
+
     const handleDeleteButton = (id) => {
-        const productId = id;
-        console.log('object id', productId);
+        const processed = window.confirm('Do you want to Cancel your products?');
+        const url = `http://localhost:5000/remove/${id}`;
+        if(processed){
+            fetch(url, {
+                method: 'DELETE',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(myOrders)
+            })
+                .then(res => res.json())
+                .then(data => {
+                    // alert('Delete Products successfully!');
+                    const filterItem = myOrders.filter( product => product._id !== id);
+                    setMyOrders(filterItem);
+                    console.log(data);
+                })
+        }
+       
     }
 
     return (
