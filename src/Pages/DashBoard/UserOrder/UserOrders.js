@@ -17,7 +17,8 @@ const UserOrders = () => {
     },[url]);
 
     const handleDeleteButton = (id) => {
-        alert('Button is click')
+        const productId = id;
+        console.log('object id', productId);
     }
 
     return (

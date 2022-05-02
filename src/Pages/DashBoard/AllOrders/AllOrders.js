@@ -15,9 +15,24 @@ const AllOrders = () => {
     }, [])
 
     const handleDeleteButton = (id) => {
-        alert('Button is click')
+        console.log('id',id);
+       const processed = window.confirm('Do you want to deleted Orders? Please Think again about it. Thank you');
+       if(processed){
+           const url = `http://localhost:5000/remove/${id}`;
+           fetch(url, {
+               method: 'DELETE',
+               headers: {
+                   'content-type': 'application/json'
+               },
+               body: JSON.stringify(allOrders)
+           })
+               .then(res => res.json())
+               .then(data => {
+                    const filterProducts = allOrders.filter( product => product._id !== id);
+                    setAllOrders(filterProducts);
+               })
+       }
     }
-
 
     return (
         <div>
