@@ -5,14 +5,11 @@ import useAuth from '../../../hooks/useAuth';
 
 const UserOrders = () => {
     const [myOrders, setMyOrders] = useState([]);
-    const { user } = useAuth();
-
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
-    
     const handleShow = () => setShow(true);
     const { register, handleSubmit } = useForm();
-    
+    const { user } = useAuth();
 
     const url = `http://localhost:5000/myOrders/${user.email}`;
     console.log(url);
@@ -24,6 +21,7 @@ const UserOrders = () => {
                 setMyOrders(data);
             })
     }, [url]);
+    
 
     const handleDeleteButton = (id) => {
         const processed = window.confirm('Do you want to Cancel your products?');
@@ -115,14 +113,11 @@ const UserOrders = () => {
                     <Modal.Body>
                         <div className='form-div'>
                             <form onSubmit={handleSubmit(onSubmit)}>
-                                <input placeholder='user name' defaultValue={user.displayName} required className='form-control w-75'{...register("name")} />
-                                <input placeholder='user email' required defaultValue={user.email} className='form-control w-75'{...register("email")} />
-                                <input placeholder='product price' defaultValue={product.price} className='form-control w-75'{...register("price")} />
-                                <input placeholder='product quantity' type="number" required className='form-control w-75' {...register("quantity")} />
-                                <input placeholder='Your phone number' required className='form-control w-75' {...register("mobile")} />
-                                <input placeholder='Your district' required className='form-control w-75' {...register("District")} />
-                                <textarea placeholder='Your full address' required className='form-control w-75' {...register("Present_Address")} />
-                                <button type="submit" required className="btn btn-secondary w-75 mt-3">Submit</button>
+                                <input placeholder='product name' required className='form-control w-75'{...register("name")} />
+                                <input placeholder='product images' required className='form-control w-75'{...register("images")} />
+                                <input placeholder='product price' required className='form-control w-75' {...register("price")} />
+                                <input placeholder='product Rating' required className='form-control w-75' {...register("rating")} />
+                                <input placeholder='product country' required className='form-control w-75' {...register("country")} />
                             </form>
                         </div>
                     </Modal.Body>
