@@ -1,3 +1,4 @@
+import { async } from '@firebase/util';
 import React, { useEffect, useState } from 'react';
 import { Button, Modal } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
@@ -21,7 +22,7 @@ const UserOrders = () => {
                 setMyOrders(data);
             })
     }, [url]);
-    
+
 
     const handleDeleteButton = (id) => {
         const processed = window.confirm('Do you want to Cancel your products?');
@@ -47,16 +48,38 @@ const UserOrders = () => {
 
     // edit user information
     const onSubmit = data => {
-            console.log(data);  
+        console.log(data);
     };
 
+    const [orderInfo, setOrderIn] = useState([]);
+    useEffect(() => {
+        loadInfo(); /// ;
+    }, [])
+
+
     const handleUserInformation = (id) => {
+        // const url = `http://localhost:5000/orderUpdate/${id}`;
+        // console.log('update user id', id);
+    };
+
+    const loadInfo = async (id) => {
+        // const url = `http://localhost:5000/orderUpdate/${id}`;
+        console.log('load info id',id);
+        try {
+            const res = fetch(`http://localhost:5000/orderUpdate/${id}`);
+            const data = await res.json();
+            console.log(data);
+        }
+        catch (error) {
+            
+        }
+
         handleShow();
         <Button variant="primary" onClick={handleShow}>
             Launch static backdrop modal
         </Button>
     }
-   
+
 
     return (
         <>
@@ -94,7 +117,9 @@ const UserOrders = () => {
                                             <td>{order.mobile}</td>
                                             <td className='text-center text-danger'>pending</td>
                                             <td> <button className='btn btn-danger' onClick={() => handleDeleteButton(order._id)}>cancel</button></td>
-                                            <td><button className='btn btn-primary' onClick={() => handleUserInformation(order._id)}>Edit</button></td>
+                                            {/* onClick={() => { func1(); func2(); }} */}
+                                            <td><button className='btn btn-primary' onClick={() => { handleUserInformation(order._id); loadInfo(order._id); }} >Edit</button></td>
+                                            {/* <td><button className='btn btn-primary' onClick={() => handleUserInformation(order._id)}>Edit</button></td> */}
                                         </tr>
                                     </>)
                                 }
