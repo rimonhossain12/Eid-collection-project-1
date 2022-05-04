@@ -9,6 +9,7 @@ import AddProduct from './Pages/Home/AddProduct/AddProduct';
 import Products from './Pages/Home/Products/Products/Products';
 import PrivateRouter from './Pages/Login/PrivateRoute/PrivateRouter';
 import DashBoardHome from './Pages/DashBoard/DashBoardHome/DashBoardHome';
+import UserOrders from './Pages/DashBoard/UserOrder/UserOrders';
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
 
             <Route path='/login' element={<Login />}></Route>
             <Route path='/register' element={<Register />}></Route>
+            <Route path='/userOrders' element={<UserOrders />}></Route>
           </Routes>
         </BrowserRouter>,
       </AuthProvider>

@@ -75,6 +75,7 @@ const AllOrders = () => {
                     </table>
                 </div>
             </div>
+            {/* <Modal /> */}
         </div>
     );
 };

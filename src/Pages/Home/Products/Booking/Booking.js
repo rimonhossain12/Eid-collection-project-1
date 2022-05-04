@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Button, Modal } from 'react-bootstrap';
 import { useForm } from "react-hook-form";
 import ReactStars from 'react-rating-stars-component';
 import { useParams } from 'react-router-dom';
@@ -8,9 +9,11 @@ import './Booking.css';
 
 const Booking = () => {
     const { user } = useAuth();
-    console.log('user found', user.email);
-    const { reset } = useForm();
+    const [order, setOrder] = useState({});
     const { productId } = useParams();
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
     const [product, setProduct] = useState([]);
     const { register, handleSubmit } = useForm();
 
@@ -32,20 +35,24 @@ const Booking = () => {
             productImg: product.images,
             price: product.price
         }
-
+        setOrder(newData);
         fetch('http://localhost:5000/order', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify(newData)
+            body: JSON.stringify(order)
         })
             .then(res => res.json())
             .then(data => {
                 console.log(data);
                 if (data.insertedId) {
-                    alert('Thank you for your orders');
-                    reset();
+                    handleShow();
+                    <Button variant="primary" onClick={handleShow}>
+                        Launch static backdrop modal
+                    </Button>                    
+                    setOrder({});
+                    // navigate('/');
                 }
             }
             );
@@ -102,6 +109,23 @@ const Booking = () => {
                     </div>
                 </div>
             </div>
+            <>
+                <Modal
+                    show={show}
+                    onHide={handleClose}
+                    backdrop="static"
+                    keyboard={false}
+                >
+                    <Modal.Body>
+                        Thank your for added new products.
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <Button variant="primary" className="mx-auto" onClick={handleClose}>
+                            Close
+                        </Button>
+                    </Modal.Footer>
+                </Modal>
+            </>
         </>
     );
 };
