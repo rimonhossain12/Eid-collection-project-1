@@ -8,6 +8,7 @@ const useFirebase = () => {
     const [user, setUser] = useState({});
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState('');
+    const [isAdmin,setIsAdmin] = useState(false);
 
 
     const auth = getAuth();
@@ -105,7 +106,18 @@ const useFirebase = () => {
             }
             setIsLoading(false);
         });
-    }, [auth])
+    }, [auth]);
+
+    // admin trigger this email is admin checking
+
+    useEffect(() => {
+        fetch(`http://localhost:5000/admin/${user.email}`)
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+            setIsAdmin(data.admin)
+        });
+    },[setIsAdmin,user.email]);
 
     // saved user to the database
 
@@ -132,6 +144,7 @@ const useFirebase = () => {
         isLoading,
         user,
         logOut,
+        isAdmin,
         googleLoginSystem,
         githubLoginSystem
     }

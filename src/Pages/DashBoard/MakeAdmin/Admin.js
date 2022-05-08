@@ -18,10 +18,10 @@ const Admin = () => {
                 alert('Make admin successfully');
                 reset()
             }
-        })
-            
+        })            
     }
 
+    
     return (
         <div className='mt-3'>
             <p className='fs-4'>Please Make an Admin</p>

@@ -7,7 +7,7 @@ const UserOrders = () => {
     const [myOrders, setMyOrders] = useState([]);
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
-    // const handleShow = () => setShow(true);
+    const handleShow = () => setShow(true);
     const { register, handleSubmit } = useForm();
     const { user } = useAuth();
 
@@ -20,7 +20,7 @@ const UserOrders = () => {
                 console.log(data);
                 setMyOrders(data);
             })
-    }, [url]);
+    }, []);
 
 
     const handleDeleteButton = (id) => {
@@ -56,26 +56,28 @@ const UserOrders = () => {
     // }, [])
 
     const handleUserInformation = (id) => {
-        // const url = `http://localhost:5000/orderUpdate/${id}`;
-        // console.log('update user id', id);
+        const url = `http://localhost:5000/orderUpdate/${id}`;
+        console.log('update user id', id);
     };
 
-    const loadInfo = async (id) => {
+    const LoadInfo = (id) => {
         // const url = `http://localhost:5000/orderUpdate/${id}`;
         console.log('load info id',id);
         try {
-            const res = fetch(`http://localhost:5000/orderUpdate/${id}`);
-            const data = await res.json();
-            console.log(data);
+            fetch(`http://localhost:5000/orderUpdate/${id}`)
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+            })
         }
         catch (error) {
             
         }
 
-        // handleShow();
-        // <Button variant="primary" onClick={handleShow}>
-        //     Launch static backdrop modal
-        // </Button>
+        handleShow();
+        <Button variant="primary" onClick={handleShow}>
+            Launch static backdrop modal
+        </Button>
     }
 
 
@@ -116,7 +118,7 @@ const UserOrders = () => {
                                             <td className='text-center text-danger'>pending</td>
                                             <td> <button className='btn btn-danger' onClick={() => handleDeleteButton(order._id)}>cancel</button></td>
                                             {/* onClick={() => { func1(); func2(); }} */}
-                                            <td><button className='btn btn-primary' onClick={() => { handleUserInformation(order._id); loadInfo(order._id); }} >Edit</button></td>
+                                            <td><button className='btn btn-primary' onClick={() => { handleUserInformation(order._id); LoadInfo(order._id); }} >Edit</button></td>
                                             {/* <td><button className='btn btn-primary' onClick={() => handleUserInformation(order._id)}>Edit</button></td> */}
                                         </tr>
                                     </>)
