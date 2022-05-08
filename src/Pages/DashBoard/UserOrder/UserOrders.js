@@ -1,4 +1,3 @@
-import { async } from '@firebase/util';
 import React, { useEffect, useState } from 'react';
 import { Button, Modal } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
@@ -8,7 +7,7 @@ const UserOrders = () => {
     const [myOrders, setMyOrders] = useState([]);
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+    // const handleShow = () => setShow(true);
     const { register, handleSubmit } = useForm();
     const { user } = useAuth();
 
@@ -51,11 +50,10 @@ const UserOrders = () => {
         console.log(data);
     };
 
-    const [orderInfo, setOrderIn] = useState([]);
-    useEffect(() => {
-        loadInfo(); /// ;
-    }, [])
-
+    // const [orderInfo, setOrderIn] = useState([]);
+    // useEffect(() => {
+    //     loadInfo(); /// ;
+    // }, [])
 
     const handleUserInformation = (id) => {
         // const url = `http://localhost:5000/orderUpdate/${id}`;
@@ -74,10 +72,10 @@ const UserOrders = () => {
             
         }
 
-        handleShow();
-        <Button variant="primary" onClick={handleShow}>
-            Launch static backdrop modal
-        </Button>
+        // handleShow();
+        // <Button variant="primary" onClick={handleShow}>
+        //     Launch static backdrop modal
+        // </Button>
     }
 
 

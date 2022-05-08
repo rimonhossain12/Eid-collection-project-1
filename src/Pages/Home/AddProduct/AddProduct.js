@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Banner from '../Shared/Banner/Banner';
 import { useForm } from "react-hook-form";
 import './AddProduct.css';
 import { Button, Modal } from 'react-bootstrap';
@@ -34,7 +33,7 @@ const AddProduct = () => {
     }
     return (
         <div>
-            <Banner />
+            {/* <Banner /> */}
             <h2 className='mt-5'>Added your products</h2>
             <div className='form-div'>
                 <form onSubmit={handleSubmit(onSubmit)}>

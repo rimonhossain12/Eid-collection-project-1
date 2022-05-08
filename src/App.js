@@ -6,10 +6,10 @@ import Login from './Pages/Login/Login/Login';
 import Register from './Pages/Login/Register/Register';
 import AuthProvider from './Context/AuthProvider/AuthProvider';
 import AddProduct from './Pages/Home/AddProduct/AddProduct';
-import Products from './Pages/Home/Products/Products/Products';
 import PrivateRouter from './Pages/Login/PrivateRoute/PrivateRouter';
 import DashBoardHome from './Pages/DashBoard/DashBoardHome/DashBoardHome';
 import UserOrders from './Pages/DashBoard/UserOrder/UserOrders';
+import AllOrders from './Pages/DashBoard/AllOrders/AllOrders';
 
 function App() {
   return (
@@ -20,7 +20,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path='/home' element={<Home />} />
             <Route path='/addProduct' element={<AddProduct />} />
-            <Route path='/products/' element={<Products />}></Route>
+           
             <Route path='/DashBoard' element={<DashBoardHome/> }/>
             <Route
               path='/order/:productId'
@@ -30,10 +30,15 @@ function App() {
                 </PrivateRouter>
               }
             />
-            {/* <Route path="/DashBoard" element={<DashBoardHome />}>
-              <Route path="/MyOrders" element={<UserOrders />} />
-              <Route path="/AllOrders" element={<AllOrders />} />
-            </Route> */}
+
+            <Route path='/DashBoard' element={<PrivateRouter><DashBoardHome/></PrivateRouter>}>
+              <Route exact path='/DashBoard' element={<DashBoardHome/>}/>
+              <Route path='/DashBoard/userOrder' element={<UserOrders/>}/>
+              <Route path='/DashBoard/allOrders' element={<AllOrders/>}/>
+              <Route path='/DashBoard/addProducts' element={<AddProduct/>}/>
+
+
+            </Route>
 
             <Route path='/login' element={<Login />}></Route>
             <Route path='/register' element={<Register />}></Route>
