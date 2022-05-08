@@ -10,6 +10,7 @@ import PrivateRouter from './Pages/Login/PrivateRoute/PrivateRouter';
 import DashBoardHome from './Pages/DashBoard/DashBoardHome/DashBoardHome';
 import UserOrders from './Pages/DashBoard/UserOrder/UserOrders';
 import AllOrders from './Pages/DashBoard/AllOrders/AllOrders';
+import Admin from './Pages/DashBoard/MakeAdmin/Admin';
 
 function App() {
   return (
@@ -36,13 +37,12 @@ function App() {
               <Route path='/DashBoard/userOrder' element={<UserOrders/>}/>
               <Route path='/DashBoard/allOrders' element={<AllOrders/>}/>
               <Route path='/DashBoard/addProducts' element={<AddProduct/>}/>
-
-
+              <Route path='/DashBoard/makeAdmin' element={<Admin/>}/>
             </Route>
 
             <Route path='/login' element={<Login />}></Route>
             <Route path='/register' element={<Register />}></Route>
-            <Route path='/userOrders' element={<UserOrders />}></Route>
+            {/* <Route path='/userOrders' element={<UserOrders />}></Route> */}
           </Routes>
         </BrowserRouter>,
       </AuthProvider>
