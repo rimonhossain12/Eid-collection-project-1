@@ -11,6 +11,7 @@ import DashBoardHome from './Pages/DashBoard/DashBoardHome/DashBoardHome';
 import UserOrders from './Pages/DashBoard/UserOrder/UserOrders';
 import AllOrders from './Pages/DashBoard/AllOrders/AllOrders';
 import Admin from './Pages/DashBoard/MakeAdmin/Admin';
+import AdminRoute from './Pages/Login/Admin/AdminRoute';
 
 function App() {
   return (
@@ -20,7 +21,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path='/home' element={<Home />} />
-            <Route path='/addProduct' element={<AddProduct />} />
+            {/* <Route path='/addProduct' element={<AddProduct />} /> */}
            
             <Route path='/DashBoard' element={<DashBoardHome/> }/>
             <Route
@@ -33,11 +34,11 @@ function App() {
             />
 
             <Route path='/DashBoard' element={<PrivateRouter><DashBoardHome/></PrivateRouter>}>
-              <Route exact path='/DashBoard' element={<DashBoardHome/>}/>
+              {/* <Route exact path='/DashBoard' element={<DashBoardHome/>}/> */}
               <Route path='/DashBoard/userOrder' element={<UserOrders/>}/>
-              <Route path='/DashBoard/allOrders' element={<AllOrders/>}/>
-              <Route path='/DashBoard/addProducts' element={<AddProduct/>}/>
-              <Route path='/DashBoard/makeAdmin' element={<Admin/>}/>
+              <Route path='/DashBoard/allOrders' element={<AdminRoute><AllOrders /></AdminRoute>}/>
+              <Route path='/DashBoard/addProducts' element={<AdminRoute><AddProduct /></AdminRoute>}/>
+              <Route path='/DashBoard/makeAdmin' element={<AdminRoute><Admin /></AdminRoute>}/>
             </Route>
 
             <Route path='/login' element={<Login />}></Route>
