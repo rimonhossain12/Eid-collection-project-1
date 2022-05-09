@@ -12,6 +12,7 @@ import UserOrders from './Pages/DashBoard/UserOrder/UserOrders';
 import AllOrders from './Pages/DashBoard/AllOrders/AllOrders';
 import Admin from './Pages/DashBoard/MakeAdmin/Admin';
 import AdminRoute from './Pages/Login/Admin/AdminRoute';
+import Profile from './Pages/DashBoard/Profile/Profile';
 
 function App() {
   return (
@@ -34,7 +35,7 @@ function App() {
             />
 
             <Route path='/DashBoard' element={<PrivateRouter><DashBoardHome/></PrivateRouter>}>
-              {/* <Route exact path='/DashBoard' element={<DashBoardHome/>}/> */}
+              <Route exact path='/DashBoard' element={<Profile/>}/>
               <Route path='/DashBoard/userOrder' element={<UserOrders/>}/>
               <Route path='/DashBoard/allOrders' element={<AdminRoute><AllOrders /></AdminRoute>}/>
               <Route path='/DashBoard/addProducts' element={<AdminRoute><AddProduct /></AdminRoute>}/>

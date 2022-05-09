@@ -13,8 +13,8 @@ const DashBoardHome = () => {
             <Container className='mt-5'>
                 <Row>
                     <Col sm={12} md={2}>
-                        <Link className='nav-link fw-bold text-start nav-style' to="/DashBoard/userOrder">My Orders</Link>
-                        
+                        <Link className='nav-link fw-bold text-start nav-style' to="/DashBoard">My Profile</Link>
+                        <Link className='nav-link fw-bold text-start nav-style' to="/DashBoard/userOrder">My Orders</Link>                        
                         {
                             isAdmin && <>
                                 <Link className='nav-link fw-bold text-start nav-style' to="/DashBoard/addProducts">Add Products</Link>
