@@ -9,7 +9,7 @@ import './Booking.css';
 
 const Booking = () => {
     const { user } = useAuth();
-    const [order, setOrder] = useState({});
+    const [order, setOrder] = useState('');
     const { productId } = useParams();
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
@@ -36,6 +36,7 @@ const Booking = () => {
             price: product.price
         }
         setOrder(newData);
+        console.log(newData);
         fetch('http://localhost:5000/order', {
             method: 'POST',
             headers: {
@@ -47,11 +48,12 @@ const Booking = () => {
             .then(data => {
                 console.log(data);
                 if (data.insertedId) {
-                    handleShow();
+                    setOrder('');
+                    handleShow();                   
                     <Button variant="primary" onClick={handleShow}>
-                        Launch static backdrop modal
+                       show modal
                     </Button>                    
-                    setOrder({});
+                    
                     // navigate('/');
                 }
             }
@@ -63,7 +65,7 @@ const Booking = () => {
             <Banner />
             <div className='container mt-5'>
                 <div class="row">
-                    <div class="col-sm-12 col-md-5">
+                    <div className="col-sm-12 col-md-5">
                         <div className='container'>
                             <div className='mt-2'>
                                 <div className="shadow p-3 mb-5 bg-body rounded div-height">

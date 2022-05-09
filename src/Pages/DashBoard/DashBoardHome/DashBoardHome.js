@@ -11,17 +11,17 @@ const DashBoardHome = () => {
         <NavbarBanner/>
             <Container className='mt-5'>
                 <Row>
-                    <Col sm={12} md={3}>
-                        <Link to="/DashBoard/userOrder">My Orders</Link> <br />                      
+                    <Col sm={12} md={2}>
+                        <Link className='nav-link fw-bold text-start'  to="/DashBoard/userOrder">My Orders</Link>                    
                         {/* {
                             isAdmin && <> */}
-                                <Link to="/DashBoard/addProducts">Add Products</Link> <br />
-                                <Link to="/DashBoard/makeAdmin">Make Admin</Link> <br />
-                                <Link to="/DashBoard/allOrders">All Orders</Link> <br />
+                                <Link className='nav-link fw-bold text-start' to="/DashBoard/addProducts">Add Products</Link>
+                        <Link className='nav-link fw-bold text-start'  to="/DashBoard/makeAdmin">Make Admin</Link> 
+                        <Link className='nav-link fw-bold text-start'  to="/DashBoard/allOrders">All Orders</Link>
                             {/* </>
                         } */}
                     </Col>
-                    <Col sm={12} md={9}>
+                    <Col sm={12} md={10} className="ms-0">
                         <Outlet></Outlet>
                        {
                            isAdmin && <>

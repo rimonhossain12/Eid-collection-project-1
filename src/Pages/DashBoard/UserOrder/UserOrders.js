@@ -5,6 +5,7 @@ import useAuth from '../../../hooks/useAuth';
 
 const UserOrders = () => {
     const [myOrders, setMyOrders] = useState([]);
+    const [order,setOrder] = useState([]);
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -20,8 +21,7 @@ const UserOrders = () => {
                 console.log(data);
                 setMyOrders(data);
             })
-    }, []);
-
+    }, [user.email,url]);
 
     const handleDeleteButton = (id) => {
         const processed = window.confirm('Do you want to Cancel your products?');
@@ -45,33 +45,28 @@ const UserOrders = () => {
 
     }
 
-    // edit user information
     const onSubmit = data => {
         console.log(data);
     };
 
-    // const [orderInfo, setOrderIn] = useState([]);
-    // useEffect(() => {
-    //     loadInfo(); /// ;
-    // }, [])
-
     const handleUserInformation = (id) => {
-        const url = `http://localhost:5000/orderUpdate/${id}`;
+        // const url = `http://localhost:5000/orderUpdate/${id}`;
         console.log('update user id', id);
     };
 
     const LoadInfo = (id) => {
         // const url = `http://localhost:5000/orderUpdate/${id}`;
-        console.log('load info id',id);
+        console.log('load info id', id);
         try {
             fetch(`http://localhost:5000/orderUpdate/${id}`)
-            .then(res => res.json())
-            .then(data => {
-                console.log(data);
-            })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data);
+                    setOrder(data);
+                })
         }
         catch (error) {
-            
+
         }
 
         handleShow();
@@ -116,10 +111,8 @@ const UserOrders = () => {
                                             <td>{order.Present_Address}</td>
                                             <td>{order.mobile}</td>
                                             <td className='text-center text-danger'>pending</td>
-                                            <td> <button className='btn btn-danger' onClick={() => handleDeleteButton(order._id)}>cancel</button></td>
-                                            {/* onClick={() => { func1(); func2(); }} */}
+                                            <td> <button className='btn btn-danger' onClick={() => handleDeleteButton(order._id)}>cancel</button></td>                                            
                                             <td><button className='btn btn-primary' onClick={() => { handleUserInformation(order._id); LoadInfo(order._id); }} >Edit</button></td>
-                                            {/* <td><button className='btn btn-primary' onClick={() => handleUserInformation(order._id)}>Edit</button></td> */}
                                         </tr>
                                     </>)
                                 }
@@ -138,11 +131,11 @@ const UserOrders = () => {
                     <Modal.Body>
                         <div className='form-div'>
                             <form onSubmit={handleSubmit(onSubmit)}>
-                                <input placeholder='product name' required className='form-control w-75'{...register("name")} />
-                                <input placeholder='product images' required className='form-control w-75'{...register("images")} />
-                                <input placeholder='product price' required className='form-control w-75' {...register("price")} />
-                                <input placeholder='product Rating' required className='form-control w-75' {...register("rating")} />
-                                <input placeholder='product country' required className='form-control w-75' {...register("country")} />
+                                <input value={order.name} required className='form-control w-75'{...register("name")} />
+                                <input value={order.mobile} required className='form-control w-75'{...register("mobile")} />
+                                <input value={order.Present_Address} required className='form-control w-75' {...register("Present_Address")} />
+                                <input value={order.District} required className='form-control w-75' {...register("District")} />
+                                <input value={order.email} required className='form-control w-75' {...register("email")} />
                             </form>
                         </div>
                     </Modal.Body>
