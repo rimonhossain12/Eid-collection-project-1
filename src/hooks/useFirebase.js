@@ -94,8 +94,6 @@ const useFirebase = () => {
             // An error happened.
         }).finally(() => setIsLoading(false));
     }
-
-
     // observe user
     useEffect(() => {
         onAuthStateChanged(auth, (user) => {
@@ -119,7 +117,6 @@ const useFirebase = () => {
     },[setIsAdmin,user.email]);
 
     // saved user to the database
-
     const savedUsers = (email,displayName,method) => {
        const user = {email,displayName}
        console.log('user send',user);
