@@ -14,11 +14,12 @@ const DashBoardHome = () => {
                 <Row>
                     <Col sm={12} md={2}>
                         <Link className='nav-link fw-bold text-start nav-style' to="/DashBoard">My Profile</Link>
-                        <Link className='nav-link fw-bold text-start nav-style' to="/DashBoard/userOrder">My Orders</Link>                        
+                        <Link className='nav-link fw-bold text-start nav-style' to="/DashBoard/userOrder">My Orders</Link>        
+                        <Link className='nav-link fw-bold text-start nav-style' to="/DashBoard/makeAdmin">Make Admin</Link>
+                
                         {
                             isAdmin && <>
                                 <Link className='nav-link fw-bold text-start nav-style' to="/DashBoard/addProducts">Add Products</Link>
-                                <Link className='nav-link fw-bold text-start nav-style' to="/DashBoard/makeAdmin">Make Admin</Link>
                                 <Link className='nav-link fw-bold text-start nav-style' to="/DashBoard/allOrders">All Orders</Link>
                             </>
                         }

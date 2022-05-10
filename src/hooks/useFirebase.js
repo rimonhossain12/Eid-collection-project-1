@@ -109,9 +109,8 @@ const useFirebase = () => {
     }, [auth]);
 
     // admin trigger this email is admin checking
-
     useEffect(() => {
-        fetch(`http://localhost:5000/admin/${user.email}`)
+        fetch(`http://localhost:5000/foundAdmin/${user.email}`)
         .then(res => res.json())
         .then(data => {
             console.log(data);

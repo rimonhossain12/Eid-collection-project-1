@@ -12,6 +12,9 @@ const UserOrders = () => {
     const { register, handleSubmit } = useForm();
     const { user } = useAuth();
 
+    let productList = myOrders.length;
+    console.log(productList);
+
     const url = `http://localhost:5000/myOrders/${user.email}`;
     console.log(url);
     useEffect(() => {
@@ -78,49 +81,52 @@ const UserOrders = () => {
 
     return (
         <>
-            <div>
-                <h2>This is Single Orders: {myOrders.length}</h2>
-                <div style={{ marginLeft: '50px' }} className="mt-3">
-                    <div className='table-responsive'>
-                        <table id='customer'>
-                            <thead>
-                                <tr>
-                                    <th>IMG</th>
-                                    <th>ProductName</th>
-                                    <th>price</th>
-                                    <th>quantity</th>
-                                    <th>userName</th>
-                                    <th>Email</th>
-                                    <th>Location </th>
-                                    <th>Phone</th>
-                                    <th>Status</th>
-                                    <th>Decision</th>
-                                    <th>Update</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {
-                                    myOrders.map((order, index) => <>
-                                        <tr key={order._id}>
-                                            <td><img src={order.productImg} style={{ height: '50px', width: '100%' }} alt="product_img" /></td>
-                                            <td>{order.productName}</td>
-                                            <td>{order.price}</td>
-                                            <td>{order.quantity}</td>
-                                            <td>{order.name}</td>
-                                            <td>{order.email}</td>
-                                            <td>{order.Present_Address}</td>
-                                            <td>{order.mobile}</td>
-                                            <td className='text-center text-danger'>pending</td>
-                                            <td> <button className='btn btn-danger' onClick={() => handleDeleteButton(order._id)}>cancel</button></td>                                            
-                                            <td><button className='btn btn-primary' onClick={() => { handleUserInformation(order._id); LoadInfo(order._id); }} >Edit</button></td>
-                                        </tr>
-                                    </>)
-                                }
-                            </tbody>
-                        </table>
+             {
+                productList > 0 ? <div>
+                    <div style={{ marginLeft: '50px' }} className="mt-3">
+                        <div className='table-responsive'>
+                            <table id='customer'>
+                                <thead>
+                                    <tr>
+                                        <th>IMG</th>
+                                        <th>ProductName</th>
+                                        <th>price</th>
+                                        <th>quantity</th>
+                                        <th>userName</th>
+                                        <th>Email</th>
+                                        <th>Location </th>
+                                        <th>Phone</th>
+                                        <th>Status</th>
+                                        <th>Decision</th>
+                                        <th>Update</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {
+                                        myOrders.map((order, index) => <>
+                                            <tr key={order._id}>
+                                                <td><img src={order.productImg} style={{ height: '50px', width: '100%' }} alt="product_img" /></td>
+                                                <td>{order.productName}</td>
+                                                <td>{order.price}</td>
+                                                <td>{order.quantity}</td>
+                                                <td>{order.name}</td>
+                                                <td>{order.email}</td>
+                                                <td>{order.Present_Address}</td>
+                                                <td>{order.mobile}</td>
+                                                <td className='text-center text-danger'>pending</td>
+                                                <td> <button className='btn btn-danger' onClick={() => handleDeleteButton(order._id)}>cancel</button></td>
+                                                <td><button className='btn btn-primary' onClick={() => { handleUserInformation(order._id); LoadInfo(order._id); }} >Edit</button></td>
+                                            </tr>
+                                        </>)
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
-                </div>
-            </div>
+                </div> 
+                : 
+                    <p className="fs-3 mt-2 fw-bold">You haven't placed any orders yet </p>
+             }
             <>
                 <Modal
                     show={show}

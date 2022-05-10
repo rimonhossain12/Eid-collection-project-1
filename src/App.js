@@ -39,7 +39,8 @@ function App() {
               <Route path='/DashBoard/userOrder' element={<UserOrders/>}/>
               <Route path='/DashBoard/allOrders' element={<AdminRoute><AllOrders /></AdminRoute>}/>
               <Route path='/DashBoard/addProducts' element={<AdminRoute><AddProduct /></AdminRoute>}/>
-              <Route path='/DashBoard/makeAdmin' element={<AdminRoute><Admin /></AdminRoute>}/>
+              <Route path='/DashBoard/makeAdmin' element={<Admin/>} />
+              {/* <Route path='/DashBoard/makeAdmin' element={<AdminRoute><Admin /></AdminRoute>}/> */}
             </Route>
 
             <Route path='/login' element={<Login />}></Route>

@@ -1,9 +1,11 @@
 import React from 'react';
+import { Button } from 'react-bootstrap';
 import useAuth from '../../../hooks/useAuth';
 import './Profile.css';
 
 const Profile = () => {
-    const{user} = useAuth();
+    const { user, logOut
+} = useAuth();
     return (
         <div className='container'>
             <div className='card'>
@@ -13,7 +15,7 @@ const Profile = () => {
                 <div className='mt-3'>
                     <p className='fw-lighter fs-5 mt-3'>{user.displayName}</p>
                     <p className='fw-lighter fs-5 mt-3'>{user.email}</p>
-                    <button>Logout</button>
+                    <Button onClick={logOut} variant="primary">LogOUt</Button>{' '}
                 </div>               
             </div>           
         </div>
