@@ -33,7 +33,9 @@ const Admin = () => {
                         <span></span>
                         <label>Email</label>
                     </div>
-                    <button className='w-50' type='submit' id='input-submit'>Login</button>
+                    <div className='text-center'>
+                        <button className='w-50' type='submit' id='input-submit'>Login</button>
+                    </div>
                 </form>
             </div>
         </div>

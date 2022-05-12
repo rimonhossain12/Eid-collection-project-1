@@ -34,7 +34,7 @@ const AddProduct = () => {
     return (
         <div>
             {/* <Banner /> */}
-            <h2 className='mt-5'>Added your products</h2>
+            <h2 className='mt-5 text-center'>Please Add Products</h2>
             <div className='form-div'>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <input placeholder='product name' required className='form-control'{...register("name")} />
@@ -42,7 +42,9 @@ const AddProduct = () => {
                     <input placeholder='product price' required className='form-control' {...register("price")} />
                     <input placeholder='product Rating' required className='form-control' {...register("rating")} />
                     <input placeholder='product country' required className='form-control' {...register("country")} />
-                    <button type="submit" required className="btn btn-secondary w-50 mt-3">Submit</button>
+                  <div className='text-center'>
+                        <button type="submit" required className="text-center btn btn-secondary w-50 mt-3">Submit</button>
+                  </div>
                 </form>
             </div>
             <>
