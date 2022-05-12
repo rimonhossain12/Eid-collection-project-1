@@ -89,17 +89,11 @@ const UserOrders = () => {
             console.log(data);
         })
     };
-
-    // const handleUserInformation = (id) => {
-    //     // const url = `http://localhost:5000/orderUpdate/${id}`;
-    //     console.log('update user id', id);
-    // };
-
     return (
         <>
              {
                 productList > 0 ? <div>
-                    <div style={{ marginLeft: '50px' }} className="mt-3">
+                    <div style={{ marginLeft: '50px' }}>
                         <div className='table-responsive'>
                             <table id='customer'>
                                 <thead>

@@ -30,13 +30,10 @@ const UserReview = () => {
                             fullIcon={<i className="fa fa-star"></i>}
                             activeColor="#ffd700"
                         />
-                        <div className='d-inline'>
-                            {rating}
-                        </div>
                     </div>
-                    {/* <div className='d-inline'>
-                        {rating}
-                    </div> */}
+                    <div className='d-inline'>
+                        <h5 className='fw-5'>Your rating: {rating}</h5>
+                    </div>
                 </div>
             </div>
         </div>

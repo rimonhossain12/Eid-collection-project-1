@@ -23,8 +23,8 @@ const Admin = () => {
 
     
     return (
-        <div className='mt-3'>
-            <p className='fs-4'>Please Make an Admin</p>
+        <div>
+            <p className='fs-4 text-center'>Please Make an Admin</p>
             <div className='mt-3 form-div'>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     {/* <input className='form-control' {...register("email",  { required: true, maxLength: 20 })} /> */}

@@ -36,8 +36,8 @@ const AllOrders = () => {
 
     return (
         <div>
-            <h2>This is All Users Collections: {allOrders.length}</h2>
-            <div style={{ marginLeft: '50px' }} className="mt-3">
+            <h2 className='text-center mb-2 fw-bold'>All Orders History</h2>
+            <div style={{ marginLeft: '50px' }}>
                 <div className='table-responsive'>
                     <table id='customer'>
                         <thead>

@@ -1,16 +1,18 @@
 import React from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
+import NavbarBanner from '../../Home/Shared/Navbar/NavbarBanner';
 import './DashBoardHome.css';
 
 const DashBoardHome = () => {
-    const { isAdmin } = useAuth();
+    const { user,isAdmin } = useAuth();
     return (
        <div className='dashboard'>
+           <NavbarBanner/>
             <div className="dashboard-container">
                 <div className="row">
-                    <div className="col-sm-12 col-md-6 col-lg-3 text-secondary text-start link-div dashboard-link">
-                        <h6 className='text-uppercase fw-bold mt-2 text-center'>User Dashboard</h6>
+                    <div className="col-sm-12 col-md-4 col-lg-3 text-secondary text-start link-div dashboard-link">
+                        <h6 className='text-uppercase fw-bold mt-2 text-center'>{user.displayName} Dashboard</h6>
                         <ul>
                             <li>
                                 <i class="fas fa-user-circle" style={{ color: 'dark' }}></i>
@@ -35,14 +37,14 @@ const DashBoardHome = () => {
                                         <Link className='list-style' to="/DashBoard/addProducts">Add Products</Link>
                                     </li>
                                     <li>
-                                        <i class="fas fa-book-reader"></i>
+                                        <i class="fa-solid fa-person"></i>
                                         <Link className='list-style' to="/DashBoard/makeAdmin">Make Admin</Link>
                                     </li>
                                 </>
                             }
                         </ul>
                     </div>
-                    <div className='col-sm-12 col-md-6 col-lg-9 text-start dashboard-link-div'>
+                    <div className='col-sm-12 col-md-8 col-lg-9 text-start dashboard-link-div'>
                         <Outlet></Outlet>
                         {
                             isAdmin && <>

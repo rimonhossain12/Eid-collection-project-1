@@ -1,24 +1,21 @@
 import React from 'react';
-import { Button } from 'react-bootstrap';
 import useAuth from '../../../hooks/useAuth';
 import './Profile.css';
 
 const Profile = () => {
-    const { user, logOut
-} = useAuth();
+    const { user, logOut} = useAuth();
     return (
-        <div className='container'>
-            <div className='card'>
-                <div>
+       <div className="container">
+           <div className="profile-main">
+               <div className="profile-div">
+                   <h4 className='fw-lighter mb-3'>Profile</h4>
                     <img src="https://i.ibb.co/58mw0Qs/219986.png" className='img-fluid mx-auto mt-2' alt="219986" border="0" />
-                </div>
-                <div className='mt-3'>
                     <p className='fw-lighter fs-5 mt-3'>{user.displayName}</p>
                     <p className='fw-lighter fs-5 mt-3'>{user.email}</p>
-                    <Button onClick={logOut} variant="primary">LogOUt</Button>{' '}
-                </div>               
-            </div>           
-        </div>
+                    <button className='btn btn-primary' onClick={logOut}>LogOut</button>
+               </div>
+           </div>
+       </div>
     );
 };
 
