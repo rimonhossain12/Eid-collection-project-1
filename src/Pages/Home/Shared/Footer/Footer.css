@@ -1,21 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
 .footer-container{
     background:#000000;
     color: white;
     padding: 40px 0;
+    font-family: 'Playfair Display', serif;
 
 }
-
-.col-div h4{
+.col h4{
     text-align: left;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: 'Playfair Display', serif;
 }
 .menu-list {
     text-align: left;
-     list-style: none;
-     color: white;
+    list-style: none;
+    color: white;
 }
 .menu-list li {
-   text-decoration: none;
+   text-align: left;
 }
 .menu-list li a {
     text-decoration: none;
@@ -23,22 +24,56 @@
     font-weight: 400;
     font-size: 12px;
     letter-spacing: 1.5px;
-    font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
     color: gray;
 }
-.input-div{
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+.input{
     text-align: left;
     padding: 2px 2px;
 }
-.input-div h4{
-    text-align: left;
+.input h4{
+     font-family: 'Playfair Display', serif;
 }
-.input-div input{
-    text-align: left;
+.input
+ input{
+    text-align: start;
     padding: 3px 0px;
     border: none;
     border-radius:3px;
+    /* font-size: 12px; */
+    width: 75%;
+
+}
+.text-button{
+    display: inline-block;
+}
+.submit-btn{
+    display: inline-block;
 }
 .input-div p {
+    padding-top: 20px;
+    text-align: start;
+    font-family: Roboto, sans-serif;
+    font-size: 14px;
+    color: #666666;
+    line-height: 26px;
+    margin-top: 20px;
+}
+
+.input-btn, .submit-btn {
+  font: inherit;
+}
+
+.email-form {
+  display: flex; 
+  grid-column: 2;
+}
+
+.input-btn {
+  flex-grow: 1;
+  padding: 0.5em 0.75em;
+}
+
+.submit-btn {
+  padding: 0.5em 0.75em;
+  background:#41a28e
 }

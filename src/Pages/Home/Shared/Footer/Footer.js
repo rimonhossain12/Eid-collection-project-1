@@ -6,19 +6,19 @@ import './Footer.css';
 const Footer = () => {
     return (
         <div className='footer-container'>
-            <div className="container">
-                <Row xs={12} md={2} lg={4}>
-                    <Col className="col-div">
-                        <h4>Customer Services</h4>
-                        <ul className='menu-list'>
+           <div className="container"> 
+                <div className="row row-cols-1 row-cols-md-2 row-cols-lg-4">
+                    <div className='col'>
+                        <h4>Customer Service</h4>
+                        <ul className="menu-list">
                             <li><a href="#">Contact us</a></li>
                             <li><a href="#">Shipping</a></li>
-                            <li><a href="#">Click & Collection</a></li>
+                            <li><a href="#">Click & Collect</a></li>
                             <li><a href="#">Returns</a></li>
                             <li><a href="#">FAQ's</a></li>
                         </ul>
-                    </Col>
-                    <Col>
+                    </div>
+                    <div className='col'>
                         <h4>Customer Assistance</h4>
                         <ul className="menu-list">
                             <li><a href="#">Track My Order</a></li>
@@ -27,20 +27,30 @@ const Footer = () => {
                             <li><a href="#">Returns & Exchanges</a></li>
                             <li><a href="#">Internation Shipping</a></li>
                         </ul>
-                    </Col>
-                    <Col>
-                       Hello something
-                    </Col>
-                    <Col className="input-div">
+                    </div>
+                    <div className='col'>
+                        <h4>Follow E-commerce</h4>
+                        <ul className="menu-list">
+                            <li><a href="#">Track My Order</a></li>
+                            <li><a href="#">Online Returns</a></li>
+                            <li><a href="#">Shipping rates</a></li>
+                            <li><a href="#">Returns & Exchanges</a></li>
+                            <li><a href="#">Internation Shipping</a></li>
+                        </ul>
+                    </div>
+                    <div className='col input-div'>
                         <h4>Join The Club</h4>
-                        <div className='input-div'>
-                            <input type="Email" placeholder='Email Address' required />
+                        <div className='input'>
+                           <form action="#" className='email-form'>
+                               <input type="email" className='input-btn' placeholder='Enter your email'/>
+                               <button type="submit" className='submit-btn'>submit</button>
+                           </form>
                         </div>
                         <p>Sign me up to receive emails and new products arrivals offers and exclusive events.</p>
-                        <img src={footerImg} className='img-fluid' alt="" />
-                    </Col>
-                </Row>
-            </div>
+                        <img src={footerImg} className='img-fluid w-75' align="left" alt="" />
+                    </div>
+                </div>
+           </div>
         </div>
     );
 };
