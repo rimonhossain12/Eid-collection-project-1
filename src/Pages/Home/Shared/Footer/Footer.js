@@ -1,11 +1,10 @@
 import React from 'react';
-import { Row, Col } from 'react-bootstrap';
 import footerImg from '../../../../images/pay/footer-image-1.png';
 import './Footer.css';
 
 const Footer = () => {
     return (
-        <div className='footer-container'>
+        <div className='footer-container p-4 mt-5'>
            <div className="container"> 
                 <div className="row row-cols-1 row-cols-md-2 row-cols-lg-4">
                     <div className='col'>
@@ -30,13 +29,15 @@ const Footer = () => {
                     </div>
                     <div className='col'>
                         <h4>Follow E-commerce</h4>
-                        <ul className="menu-list">
-                            <li><a href="#">Track My Order</a></li>
-                            <li><a href="#">Online Returns</a></li>
-                            <li><a href="#">Shipping rates</a></li>
-                            <li><a href="#">Returns & Exchanges</a></li>
-                            <li><a href="#">Internation Shipping</a></li>
-                        </ul>
+                        <div className="social-div">
+                            <div className="menu-list">
+                                <li><a href="#"><i class="fa-brands fa-facebook"></i> Facebook</a></li>
+                                <li><a href="#"><i class="fa-brands fa-twitter"></i> Twitter</a></li>
+                                <li><a href="#"><i className='fa-brands fa-instagram'></i> Instragram</a></li>
+                                <li><a href="#"><i className='fa-brands fa-linkedin'></i> linkedin</a></li>
+                                <li><a href="#"><i className='fa-brands fa-discord'></i> Discord</a></li>
+                            </div>
+                        </div>
                     </div>
                     <div className='col input-div'>
                         <h4>Join The Club</h4>
