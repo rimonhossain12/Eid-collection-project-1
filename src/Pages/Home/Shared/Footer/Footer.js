@@ -1,49 +1,47 @@
 import React from 'react';
-import { Col, Row } from 'react-bootstrap';
-import footerImg from '../../../../images/site-images/eid2.jpg';
+import { Row, Col } from 'react-bootstrap';
+import footerImg from '../../../../images/pay/footer-image-1.png';
 import './Footer.css';
 
 const Footer = () => {
     return (
-       <div className='footer-bg'> 
-            <div className='container mt-5'>
+        <div className='footer-container'>
+            <div className="container">
                 <Row xs={12} md={2} lg={4}>
-                    <Col className="mt-5">
-                        <p className='fs-5'>Eid E-commerce</p>
-                        <img
-                            src={footerImg}
-                            width="70"
-                            height="70"
-                            style={{ borderRadius: '50%' }}
-                            className="d-inline-block align-top"
-                            alt="React Bootstrap logo"
-                        />
-                        <p>React Eid-E-Commerce</p>
-                    </Col>
-                    <Col className='mt-5'>
-                        <p className='fs-5 text-start'>Office Location</p>
-                        <ul>
-                            <li>SS Road Sirangajn</li>
-                            <li>Rimon Plaza, Floar 2nd</li>
-                            <li>arecommerce@info.com</li>
-                            <li>Hot line: 12649</li>
+                    <Col className="col-div">
+                        <h4>Customer Services</h4>
+                        <ul className='menu-list'>
+                            <li><a href="#">Contact us</a></li>
+                            <li><a href="#">Shipping</a></li>
+                            <li><a href="#">Click & Collection</a></li>
+                            <li><a href="#">Returns</a></li>
+                            <li><a href="#">FAQ's</a></li>
                         </ul>
                     </Col>
-                    <Col className='mt-5'>
-                        <p className='fs-5 text-start'>Social Link</p>
-                       <ul>
-                            <li>facebook</li>
-                            <li>Youtube</li>
-                            <li>Instagram</li>
-                            <li>LinkDin</li>
-                       </ul>
+                    <Col>
+                        <h4>Customer Assistance</h4>
+                        <ul className="menu-list">
+                            <li><a href="#">Track My Order</a></li>
+                            <li><a href="#">Online Returns</a></li>
+                            <li><a href="#">Shipping rates</a></li>
+                            <li><a href="#">Returns & Exchanges</a></li>
+                            <li><a href="#">Internation Shipping</a></li>
+                        </ul>
                     </Col>
-                    <Col className='mt-5'>
-                        <p>pay with</p>
+                    <Col>
+                       Hello something
+                    </Col>
+                    <Col className="input-div">
+                        <h4>Join The Club</h4>
+                        <div className='input-div'>
+                            <input type="Email" placeholder='Email Address' required />
+                        </div>
+                        <p>Sign me up to receive emails and new products arrivals offers and exclusive events.</p>
+                        <img src={footerImg} className='img-fluid' alt="" />
                     </Col>
                 </Row>
             </div>
-       </div>
+        </div>
     );
 };
 

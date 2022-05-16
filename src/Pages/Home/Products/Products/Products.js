@@ -16,7 +16,7 @@ const Products = () => {
                 <h2>Best EID products collections: {products.length}</h2>
             </div>
             <div className='container'>
-                <Row xs={12} md={2} lg={4}>
+                <Row xs={2} md={3} lg={4}>
                     {
                         products.map(product => <Product
                             key={product._id}
