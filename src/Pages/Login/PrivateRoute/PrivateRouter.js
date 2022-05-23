@@ -9,8 +9,8 @@ const PrivateRouter = ({ children, ...rest }) => {
     if (isLoading) {
         return <div class="text-center">
             {/* <div class="spinner-border" role="status"> */}
-                <div class="spinner-grow" role="status">
-                    <span class="visually-hidden">Loading...</span>
+                <div className="spinner-grow mt-5" role="status">
+                    <span className="visually-hidden">Loading...</span>
                 </div>
             {/* </div> */}
         </div>

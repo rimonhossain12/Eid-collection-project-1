@@ -11,8 +11,8 @@ const Products = () => {
     },[])
         
     return (
-        <div className='container'>
-            <div className='mt-5'>
+        <div className='product-list m-5'>
+            <div className='container'>
                 <h2>Best EID products collections: {products.length}</h2>
             </div>
             <div className='container'>
