@@ -5,7 +5,6 @@ import { Button, Modal } from 'react-bootstrap';
 
 const AddProduct = () => {
     const [show, setShow] = useState(false);
-
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     // const [status,setStatus] = useState(true);/
@@ -42,9 +41,9 @@ const AddProduct = () => {
                     <input placeholder='product price' required className='form-control' {...register("price")} />
                     <input placeholder='product Rating' required className='form-control' {...register("rating")} />
                     <input placeholder='product country' required className='form-control' {...register("country")} />
-                  <div className='text-center'>
+                    <div className='text-center'>
                         <button type="submit" required className="text-center btn btn-secondary w-50 mt-3">Submit</button>
-                  </div>
+                    </div>
                 </form>
             </div>
             <>
