@@ -29,7 +29,8 @@ const Review = () => {
     return (
         <div className='mt-5 slider-header mb-5'>
             <div className="slider-content">
-                <h3 className='mt-5 text-muted mb-5'>What's our customer says</h3>
+                <h2 className='fw-bold text-primary fs-4'>What our clients says about us</h2>
+                <hr className='mx-auto w-25 text-danger' />
                 <>
                     <div class="col">
                         <div class="card">

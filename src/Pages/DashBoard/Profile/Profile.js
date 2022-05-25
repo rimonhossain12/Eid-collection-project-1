@@ -8,7 +8,7 @@ const Profile = () => {
        <div className="container">
            <div className="profile-main">
                <div className="profile-div">
-                   <h4 className='fw-lighter mb-3'>Profile</h4>
+                   <h4 className='fw-lighter'>Profile</h4>
                     <img src="https://i.ibb.co/58mw0Qs/219986.png" className='img-fluid mx-auto mt-2' alt="219986" border="0" />
                     <p className='fw-lighter fs-5 mt-3'>{user.displayName}</p>
                     <p className='fw-lighter fs-5 mt-3'>{user.email}</p>

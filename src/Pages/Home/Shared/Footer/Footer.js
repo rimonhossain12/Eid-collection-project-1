@@ -26,7 +26,7 @@ const Footer = () => {
     
     return (
         <div className='footer-container'>
-           <div className="container"> 
+            <div className="container mt-5 py-4">
                 <div className="row row-cols-1 row-cols-md-2 row-cols-lg-4">
                     <div className='col'>
                         <h4>Customer Service</h4>
@@ -45,7 +45,7 @@ const Footer = () => {
                             <li><a href="/home">Online Returns</a></li>
                             <li><a href="/home">Shipping rates</a></li>
                             <li><a href="/home">Returns & Exchanges</a></li>
-                            <li><a href="/home">Internation Shipping</a></li>
+                            <li><a href="/home">InternationalShipping</a></li>
                         </ul>
                     </div>
                     <div className='col'>
@@ -63,26 +63,26 @@ const Footer = () => {
                     <div className='col input-div'>
                         <h4>Join The Club</h4>
                         <div className='input'>
-                           <form className='d-flex' onSubmit={handleSubmit(onSubmit)}>
-                               <input type="text" 
-                               {...register("email")} 
-                               className='rounded-0' 
-                               placeholder='Enter your Email' 
-                               required
-                               />
-                               <button
-                                type='submit' 
-                                className='btn btn-primary rounded' 
-                                style={{marginLeft:-10}}>subs</button>
-                           </form>
+                            <form className='d-flex' onSubmit={handleSubmit(onSubmit)}>
+                                <input type="text"
+                                    {...register("email")}
+                                    className='rounded-0'
+                                    placeholder='Enter your Email'
+                                    required
+                                />
+                                <button
+                                    type='submit'
+                                    className='btn btn-primary rounded'
+                                    style={{ marginLeft: -10 }}>subs</button>
+                            </form>
                         </div>
                         <p>Sign me up to receive emails and new products arrivals offers and exclusive events.</p>
                         <img src={footerImg} className='img-fluid w-75 mb-0' align="left" alt="" />
                     </div>
                 </div>
-           </div>
+            </div>
         </div>
-    );
+  );
 };
 
 export default Footer;

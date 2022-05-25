@@ -9,7 +9,7 @@ const DashBoardHome = () => {
     return (
        <div className='dashboard'>
            <NavbarBanner/>
-            <div className="dashboard-container">
+            <div className="dashboard-container mt-2">
                 <div className="row">
                     <div className="col-sm-12 col-md-4 col-lg-3 text-secondary text-start link-div dashboard-link">
                         <h6 className='text-uppercase fw-bold mt-2 text-center'>{user.displayName} Dashboard</h6>

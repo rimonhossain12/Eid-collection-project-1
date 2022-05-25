@@ -13,7 +13,8 @@ const Products = () => {
     return (
         <div className='product-list mt-5 mb-5'>
             <div className='container'>
-                <h2>Best EID products collections: {products.length}</h2>
+                <h2 className='fw-bold text-primary fs-4'>Our Best Eid Collections</h2>
+                <hr className='mx-auto w-25 text-danger' />
             </div>
             <div className='container'>
                 <Row xs={2} md={3} lg={4}>

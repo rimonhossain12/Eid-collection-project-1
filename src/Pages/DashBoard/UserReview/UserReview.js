@@ -82,23 +82,27 @@ const UserReview = () => {
                                     halfIcon={<i className="fa fa-star-half-alt"></i>}
                                     fullIcon={<i className="fa fa-star"></i>}
                                     activeColor="#ffd700"
-
                                 />
                             </div>
                             <div className='d-inline'>
-                                <h5
-                                    className='fw-5 mb-2'>Your rating: {rating}</h5>
+                                <h5 className='fw-5 mb-2'>Your rating: {rating}</h5>
                             </div>
                         </div>
                         <div className='w-75 mb-4'>
-                            <input type="email" className="mt-2 form-control" name='email'
-                                {...register("email")}
-                                placeholder='your Email' onChange={handleOnChange} />
+                            <input type="email" 
+                            className="mt-2 form-control" name='email'
+                            required
+                            {...register("email")}
+                            placeholder='your Email' 
+                            onChange={handleOnChange} />
                         </div>
                         <div className='w-75'>
-                            <textarea type="text" className="mt-2 form-control" name="comments"
-                                {...register("comments")}
-                                onChange={handleOnChange} placeholder='write something' />
+                            <textarea type="text" 
+                            className="mt-2 form-control" name="comments"
+                            required
+                            {...register("comments")}                            
+                                onChange={handleOnChange} 
+                                placeholder='write something' />
                         </div>
                         <div className='mt-2'>
                             <button type='submit' className='btn btn-primary'>Submit</button>
