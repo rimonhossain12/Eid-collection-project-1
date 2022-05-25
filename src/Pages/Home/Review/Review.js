@@ -27,15 +27,27 @@ const Review = () => {
 
     SwiperCore.use([Pagination,Autoplay])
     return (
-        <div className='mt -5 slider-header mb-5'>
+        <div className='mt-5 slider-header mb-5'>
             <div className="slider-content">
-                <h3 className='mt-5'>This is swiper js: {userReview.length}</h3>
+                <h3 className='mt-5 text-muted mb-5'>What's our customer says</h3>
                 <>
                     <div class="col">
                         <div class="card">
                             <Swiper
-                                slidesPerView={3}
-                                spaceBetween={30}
+                            breakpoints={{
+                                640:{
+                                    slidesPerView:1,
+                                    spaceBetween:10
+                                },
+                                768:{
+                                    slidesPerView:3,
+                                    spaceBetween:10
+                                },
+                                1024:{
+                                    slidesPerView:4,
+                                    spaceBetween:30
+                                }
+                            }}                               
                                 pagination={{
                                     clickable: true,
                                 }}
