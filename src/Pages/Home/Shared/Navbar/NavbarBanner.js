@@ -8,7 +8,7 @@ const NavbarBanner = () => {
     const {user,logOut} = useAuth();
     return (
         <div>
-            <Navbar bg="dark" variant="dark" expand="lg">
+            <Navbar bg="dark"  variant="dark" expand="lg">
                 <Container>
                     <Navbar.Brand href="#home">
                         <img

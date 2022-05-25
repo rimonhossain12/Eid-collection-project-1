@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Autoplay, Pagination } from "swiper";
 // import { Pagination } from "swiper";
+// import img from '../../../images/testimonial/user.png';
 
 
 // Import Swiper styles
@@ -26,7 +27,7 @@ const Review = () => {
 
     SwiperCore.use([Pagination,Autoplay])
     return (
-        <div className='mt -5 slider-header'>
+        <div className='mt -5 slider-header mb-5'>
             <div className="slider-content">
                 <h3 className='mt-5'>This is swiper js: {userReview.length}</h3>
                 <>
