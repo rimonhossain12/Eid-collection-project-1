@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Container, Form, Spinner } from 'react-bootstrap';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
 import { useForm } from "react-hook-form";
 import './Register.css';
@@ -65,7 +65,9 @@ const Register = () => {
                                 {error}
                             </div>
                             <div className='pass'>
-                                Forget Password
+                                <Link to="/reset">
+                                    Forget Password
+                                </Link>
                             </div>
                             <button type='submit' id="input-submit">
                                 {

@@ -14,6 +14,8 @@ import Admin from './Pages/DashBoard/MakeAdmin/Admin';
 import AdminRoute from './Pages/Login/Admin/AdminRoute';
 import Profile from './Pages/DashBoard/Profile/Profile';
 import UserReview from './Pages/DashBoard/UserReview/UserReview';
+import MangeProducts from './Pages/DashBoard/MangeProduct/MangeProducts';
+import ResetPassword from './Pages/Login/ResetPassword/ResetPassword';
 
 function App() {
   return (
@@ -38,11 +40,13 @@ function App() {
               <Route path='/DashBoard/userReview' element={<UserReview />} />
               <Route path='/DashBoard/allOrders' element={<AdminRoute><AllOrders /></AdminRoute>}/>
               <Route path='/DashBoard/addProducts' element={<AdminRoute><AddProduct /></AdminRoute>}/>
+              <Route path='/DashBoard/mangeProduct' element={<AdminRoute><MangeProducts /></AdminRoute>}/>
               <Route path='/DashBoard/makeAdmin' element={<Admin/>} />
               <Route path='/DashBoard/makeAdmin' element={<AdminRoute><Admin /></AdminRoute>}/>
             </Route>
             <Route path='/login' element={<Login />}></Route>
             <Route path='/register' element={<Register />}></Route>
+            <Route path='/reset' element={<ResetPassword />}></Route>
           </Routes>
         </BrowserRouter>,
       </AuthProvider>

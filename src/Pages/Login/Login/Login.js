@@ -10,7 +10,7 @@ const Login = () => {
     const [loginData, setLoginData] = useState({});
     const { loginUser, googleLoginSystem, githubLoginSystem } = useAuth();
     const { reset } = useForm();
-    const { isLoading } = useAuth();
+    const { isLoading, error } = useAuth();
 
     const location = useLocation();
     const navigate = useNavigate();
@@ -62,6 +62,7 @@ const Login = () => {
                             <img style={{ width: '10%' }} onClick={() => handleGoogleLogin()} className="img-fluid" src='https://i.ibb.co/8zHhKP2/download.jpg' alt="" />
                             <img style={{ width: '20%' }} onClick={() => handleGithubButton()} className="img-fluid" src='https://i.ibb.co/mSVN5Wk/download.png' alt="" />
                         </div>
+                       <p>{error}</p>
                         <button type='submit' id='input-submit'>
                            {
                                isLoading ? (

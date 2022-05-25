@@ -37,6 +37,10 @@ const DashBoardHome = () => {
                                         <Link className='list-style' to="/DashBoard/addProducts">Add Products</Link>
                                     </li>
                                     <li>
+                                        <i class="fas fa-user-circle" style={{ color: 'dark' }}></i>
+                                        <Link className='list-style' to="/DashBoard/mangeProduct">Mange Products</Link>
+                                    </li>
+                                    <li>
                                         <i class="fa-solid fa-person"></i>
                                         <Link className='list-style' to="/DashBoard/makeAdmin">Make Admin</Link>
                                     </li>
@@ -48,6 +52,7 @@ const DashBoardHome = () => {
                         <Outlet></Outlet>
                         {
                             isAdmin && <>
+                                <output></output>
                                 <output></output>
                                 <output></output>
                                 <output></output>
