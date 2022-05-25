@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Container, Form } from 'react-bootstrap';
+import { Container, Form, Spinner } from 'react-bootstrap';
 import { NavLink, useNavigate } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
 import { useForm } from "react-hook-form";
@@ -8,7 +8,7 @@ import './Register.css';
 
 const Register = () => {
     const [registerData, setRegisterData] = useState({});
-    const { registerUser, error } = useAuth();
+    const { registerUser, error,isLoading } = useAuth();
     const { reset } = useForm();
 
     const navigate = useNavigate();
@@ -67,7 +67,22 @@ const Register = () => {
                             <div className='pass'>
                                 Forget Password
                             </div>
-                            <button type='submit' id="input-submit">Register</button>
+                            <button type='submit' id="input-submit">
+                                {
+                                    isLoading ? (
+                                        <>
+                                            <Spinner
+                                                as="span"
+                                                animation="border"
+                                                size="sm"
+                                                role="status"
+                                                aria-hidden="true"
+                                            />
+                                            <span className="visually-hidden">Loading...</span>
+                                        </>
+                                    ) : ("Register")
+                                }
+                            </button>
                             {/* <input id='input-submit' type="submit"  /> */}
                             <div className='signup_link'>
                                 <NavLink to="/login" id='nav-style' style={{ textDecoration: 'none' }}>Already Register? Please Login</NavLink>

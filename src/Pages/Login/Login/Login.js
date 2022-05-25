@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Container } from 'react-bootstrap';
+import { Container, Spinner } from 'react-bootstrap';
 import './Login.css';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
@@ -10,6 +10,7 @@ const Login = () => {
     const [loginData, setLoginData] = useState({});
     const { loginUser, googleLoginSystem, githubLoginSystem } = useAuth();
     const { reset } = useForm();
+    const { isLoading } = useAuth();
 
     const location = useLocation();
     const navigate = useNavigate();
@@ -61,7 +62,24 @@ const Login = () => {
                             <img style={{ width: '10%' }} onClick={() => handleGoogleLogin()} className="img-fluid" src='https://i.ibb.co/8zHhKP2/download.jpg' alt="" />
                             <img style={{ width: '20%' }} onClick={() => handleGithubButton()} className="img-fluid" src='https://i.ibb.co/mSVN5Wk/download.png' alt="" />
                         </div>
-                        <button type='submit' id='input-submit'>Login</button>
+                        <button type='submit' id='input-submit'>
+                           {
+                               isLoading ? (
+                                   <>
+                                        <Spinner
+                                            as="span"
+                                            animation="border"
+                                            size="sm"
+                                            role="status"
+                                            aria-hidden="true"
+                                        />
+                                        <span className="visually-hidden">Loading...</span>
+                                   </>
+                               ) : (
+                                   "Login"
+                               )
+                           }
+                        </button>
                         <div className='signup_link'>
                             <NavLink to="/register" id='nav-style' style={{ textDecoration: 'none' }}>New User? Please Register</NavLink>
                         </div>
