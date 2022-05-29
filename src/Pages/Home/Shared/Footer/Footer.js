@@ -66,7 +66,7 @@ const Footer = () => {
                             <form className='d-flex' onSubmit={handleSubmit(onSubmit)}>
                                 <input type="text"
                                     {...register("email")}
-                                    className='rounded-0'
+                                    className='rounded-0 form-control'
                                     placeholder='Enter your Email'
                                     required
                                 />

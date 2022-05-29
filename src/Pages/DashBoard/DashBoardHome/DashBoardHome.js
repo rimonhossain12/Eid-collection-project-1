@@ -44,6 +44,10 @@ const DashBoardHome = () => {
                                         <i class="fa-solid fa-person"></i>
                                         <Link className='list-style' to="/DashBoard/makeAdmin">Make Admin</Link>
                                     </li>
+                                    <li>
+                                        <i class="fa-solid fa-users"></i>
+                                        <Link className='list-style' to="/DashBoard/subscribers">Subscribers</Link>
+                                    </li>
                                 </>
                             }
                         </ul>
@@ -52,6 +56,7 @@ const DashBoardHome = () => {
                         <Outlet></Outlet>
                         {
                             isAdmin && <>
+                                <output></output>
                                 <output></output>
                                 <output></output>
                                 <output></output>
