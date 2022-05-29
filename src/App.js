@@ -17,6 +17,7 @@ import UserReview from './Pages/DashBoard/UserReview/UserReview';
 import MangeProducts from './Pages/DashBoard/MangeProduct/MangeProducts';
 import ResetPassword from './Pages/Login/ResetPassword/ResetPassword';
 import Subscribers from './Pages/DashBoard/Susbcribers/Subscribers';
+import AllProducts from './Pages/AllProducts/AllProducts';
 
 function App() {
   return (
@@ -25,7 +26,8 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path='/home' element={<Home />} />          
+            <Route path='/home' element={<Home />} />
+            <Route path='/AllProducts' element={<AllProducts />} />
             <Route path='/DashBoard' element={<DashBoardHome/> }/>
             <Route
               path='/order/:productId'

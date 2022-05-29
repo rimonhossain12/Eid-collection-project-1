@@ -3,12 +3,13 @@ import { Container, Nav, Navbar } from 'react-bootstrap';
 import eidLogo from '../../../../images/site-images/eid2.jpg';
 import { HashLink } from 'react-router-hash-link';
 import useAuth from '../../../../hooks/useAuth';
+import './NavbarBanner.css';
 
 const NavbarBanner = () => {
-    const {user,logOut} = useAuth();
+    const { user, logOut } = useAuth();
     return (
         <div>
-            <Navbar bg="dark"  variant="dark" expand="lg">
+            <Navbar bg="dark" variant="dark" expand="lg">
                 <Container>
                     <Navbar.Brand href="#home">
                         <img
@@ -24,12 +25,15 @@ const NavbarBanner = () => {
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="ms-auto">
                             <Nav.Link as={HashLink} to="/home#home" style={{ color: 'white' }}>Home</Nav.Link>
+                            <Nav.Link as={HashLink} to="/allProducts#allProducts" style={{ color: 'white' }}>Products</Nav.Link>
                             <Nav.Link as={HashLink} to="/DashBoard#DashBoard" style={{ color: 'white' }}>DashBoard</Nav.Link>
-                            {
-                                user.email ? <Nav.Link onClick={logOut} style={{ color: 'white' }}>LogOut</Nav.Link> :
-                                    <Nav.Link as={HashLink} to="/register#register" style={{ color: 'white' }}>Login</Nav.Link>
-                            }
-                            {/* <p style={{color:'white'}}>{user.displayName}</p> */}
+                            {user.email ? <Nav.Link className='nav-style'>
+                                <button onClick={logOut} className='btn btn-primary badge rounded-pill bg-primary btn-style'>Logout</button>
+                            </Nav.Link> :
+
+                                <Nav.Link as={HashLink} to="/login#login" className='nav-style'>
+                                    <button className='btn btn-primary badge rounded-pill bg-primary btn-style'>Login</button>
+                                </Nav.Link>}
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
