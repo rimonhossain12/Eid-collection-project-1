@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Row } from 'react-bootstrap';
+import { Row,Button } from 'react-bootstrap';
 import Product from '../Product/Product';
 import './Products.css';
 
@@ -8,19 +8,21 @@ const Products = () => {
     const [products, setProducts] = useState([]);
     const [page, setPage] = useState(0);
     const [pageCount,setPageCount] = useState(0);
-    const [displayProducts, setDisplayProducts] = useState([]);
+    // const [displayProducts, setDisplayProducts] = useState([]);
+    const size = 10;
 
     useEffect(() => {
-        fetch('http://localhost:5000/productsLimit')
+        fetch(`http://localhost:5000/productsLimit?page=${page}&&size=${size}`)
             .then(res => res.json())
             .then(data => {
-                setDisplayProducts(data.products);
+                // setDisplayProducts(data.products);
                 setProducts(data.products);
                 const count = data.count;
-                const pageNumber = Math.ceil(count / 10);
+                const pageNumber = Math.ceil(count / size);
                 setPageCount(pageNumber);
             });
-    }, [])
+    }, [page]);
+
 
     return (
         <div className='product-list mt-5 mb-5'>
@@ -36,17 +38,21 @@ const Products = () => {
                             product={product}
                         ></Product>)
                     }
-                    <div className="pagination">
-                        {
-                            [...Array(pageCount).keys()].map(number => 
-                            <button
-                               key={number}
-                               className={number === page  ? 'selected': ' '}
-                               onClick={() => setPage(number)}
-                            >{number+1}</button>)
-                        }
-                    </div>
                 </Row>
+            </div>
+            <div className="container pagination">
+            <div className='mx-auto'>
+                    {
+                        [...Array(pageCount).keys()].map(number =>
+                            <Button 
+                                key={number}
+                                variant="secondary"
+                                className={number === page ? 'selected' : ' '}
+                                onClick={() => setPage(number)}
+                            >{number + 1}</Button >)
+                    }
+            </div>
+              
             </div>
         </div>
     );
