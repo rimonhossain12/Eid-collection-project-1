@@ -14,10 +14,11 @@ import Admin from './Pages/DashBoard/MakeAdmin/Admin';
 import AdminRoute from './Pages/Login/Admin/AdminRoute';
 import Profile from './Pages/DashBoard/Profile/Profile';
 import UserReview from './Pages/DashBoard/UserReview/UserReview';
-import MangeProducts from './Pages/DashBoard/MangeProduct/MangeProducts';
+// import MangeProducts from './Pages/DashBoard/MangeProduct/MangeProducts';
 import ResetPassword from './Pages/Login/ResetPassword/ResetPassword';
 import Subscribers from './Pages/DashBoard/Susbcribers/Subscribers';
 import AllProducts from './Pages/AllProducts/AllProducts';
+import NotFound from './Pages/NotFound/NotFound';
 
 function App() {
   return (
@@ -43,7 +44,7 @@ function App() {
               <Route path='/DashBoard/userReview' element={<UserReview />} />
               <Route path='/DashBoard/allOrders' element={<AdminRoute><AllOrders /></AdminRoute>}/>
               <Route path='/DashBoard/addProducts' element={<AdminRoute><AddProduct /></AdminRoute>}/>
-              <Route path='/DashBoard/mangeProduct' element={<AdminRoute><MangeProducts /></AdminRoute>}/>
+              {/* <Route path='/DashBoard/mangeProduct' element={<AdminRoute><MangeProducts /></AdminRoute>}/> */}
               <Route path='/DashBoard/makeAdmin' element={<Admin/>} />
               <Route path='/DashBoard/subscribers' element={<Subscribers/>} />
               <Route path='/DashBoard/makeAdmin' element={<AdminRoute><Admin /></AdminRoute>}/>
@@ -51,6 +52,7 @@ function App() {
             <Route path='/login' element={<Login />}></Route>
             <Route path='/register' element={<Register />}></Route>
             <Route path='/reset' element={<ResetPassword />}></Route>
+            <Route path='*' element={<NotFound />}></Route>
           </Routes>
         </BrowserRouter>,
       </AuthProvider>
