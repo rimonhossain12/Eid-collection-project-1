@@ -13,14 +13,14 @@ const Subscribers = () => {
     return (
         <div>
             <div>
-                <h2 className='text-primary fs-5 text-center my-3'>All Products Collections list</h2>
+                <h2 className='text-primary fs-5 text-center my-3'>All Subscribers</h2>
                 <div style={{ marginLeft: '50px' }}>
                     <div className='table-responsive'>
                         <table id='customer'>
                             <thead>
                                 <tr>
                                     <th>Email</th>
-                                    <th>React Us</th>
+                                    <th>Reach Us</th>
                                 </tr>
                             </thead>
                             <tbody>

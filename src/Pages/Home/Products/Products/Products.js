@@ -1,15 +1,27 @@
 import React, { useEffect, useState } from 'react';
 import { Row } from 'react-bootstrap';
 import Product from '../Product/Product';
+import './Products.css';
+
 
 const Products = () => {
     const [products, setProducts] = useState([]);
+    const [page, setPage] = useState(0);
+    const [pageCount,setPageCount] = useState(0);
+    const [displayProducts, setDisplayProducts] = useState([]);
+
     useEffect(() => {
-        fetch('http://localhost:5000/products')
-        .then(res => res.json())
-        .then(data => setProducts(data));
-    },[])
-        
+        fetch('http://localhost:5000/productsLimit')
+            .then(res => res.json())
+            .then(data => {
+                setDisplayProducts(data.products);
+                setProducts(data.products);
+                const count = data.count;
+                const pageNumber = Math.ceil(count / 10);
+                setPageCount(pageNumber);
+            });
+    }, [])
+
     return (
         <div className='product-list mt-5 mb-5'>
             <div className='container'>
@@ -24,6 +36,16 @@ const Products = () => {
                             product={product}
                         ></Product>)
                     }
+                    <div className="pagination">
+                        {
+                            [...Array(pageCount).keys()].map(number => 
+                            <button
+                               key={number}
+                               className={number === page  ? 'selected': ' '}
+                               onClick={() => setPage(number)}
+                            >{number+1}</button>)
+                        }
+                    </div>
                 </Row>
             </div>
         </div>
