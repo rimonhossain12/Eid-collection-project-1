@@ -49,12 +49,10 @@ const Booking = () => {
                 console.log(data);
                 if (data.insertedId) {
                     setOrder('');
-                    handleShow();                   
+                    handleShow();
                     <Button variant="primary" onClick={handleShow}>
-                       show modal
-                    </Button>                    
-                    
-                    // navigate('/');
+                        show modal
+                    </Button>
                 }
             }
             );

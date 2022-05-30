@@ -5,7 +5,7 @@ import useAuth from '../../../hooks/useAuth';
 
 const UserOrders = () => {
     const [myOrders, setMyOrders] = useState([]);
-    const [order,setOrder] = useState([]);
+    const [order, setOrder] = useState([]);
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -13,7 +13,7 @@ const UserOrders = () => {
     const { user } = useAuth();
 
     let productList = myOrders.length;
-    console.log(productList);
+    // console.log(productList);
 
     const url = `http://localhost:5000/myOrders/${user.email}`;
     console.log(url);
@@ -24,7 +24,7 @@ const UserOrders = () => {
                 console.log(data);
                 setMyOrders(data);
             })
-    }, [user.email,url]);
+    }, [user.email, url]);
 
     const handleDeleteButton = (id) => {
         const processed = window.confirm('Do you want to Cancel your products?');
@@ -66,32 +66,37 @@ const UserOrders = () => {
     }
 
     const onSubmit = data => {
-        console.log('user updated value',data);
-        const newData =  {
+        console.log('user updated value', data);
+        const newData = {
             ...order,
             District: data.District,
             Present_Address: data.Present_Address,
             email: data.email,
             mobile: data.mobile,
             name: data.name,
-            quantity:data.quantity,
+            quantity: data.quantity,
         }
         console.log('after updating all the value', newData);
-        fetch('http://localhost:5000/updatedUserInfo',{
-            method:'PUT',
-            headers:{
-                'content-type':'application/json'
+        const id = order._id;
+        console.log('id found ', id);
+        fetch(`http://localhost:5000/updateInfo/${id}`, {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json'
             },
-            body:JSON.stringify(newData)
+            body: JSON.stringify(newData)
         })
-        .then(res => res.json())
-        .then(data => {
-            console.log(data);
-        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.modifiedCount > 0){
+                    alert('Update information successfully!');
+                }
+            })
     };
     return (
         <>
-             {
+            {
                 productList > 0 ? <div>
                     <div style={{ marginLeft: '50px' }}>
                         <div className='table-responsive'>
@@ -133,10 +138,10 @@ const UserOrders = () => {
                             </table>
                         </div>
                     </div>
-                </div> 
-                : 
-                <p className="fs-3 mt-2 fw-bold">You have no orders yet!</p>
-             }
+                </div>
+                    :
+                    <p className="fs-3 mt-2 fw-bold">You have no orders yet!</p>
+            }
             <>
                 <Modal
                     show={show}
@@ -151,17 +156,16 @@ const UserOrders = () => {
                                 <input defaultValue={order.mobile} required className='form-control w-75'{...register("mobile")} />
                                 <input defaultValue={order.Present_Address} required className='form-control w-75' {...register("Present_Address")} />
                                 <input defaultValue={order.District} required className='form-control w-75' {...register("District")} />
-                                <input defaultValue={order.email} required className='form-control w-75' {...register("email")} />
+                                {/* <input defaultValue={order.email} required className='form-control w-75' {...register("email")} /> */}
                                 <input defaultValue={order.quantity} required className='form-control w-75' {...register("quantity")} />
-                                {/* <Button variant="primary" className='mx-auto'>Primary</Button>{' '} <br /> */}
-                                <input type="submit"  style={{textAlign:'center',width:'18%'}} className="mx-auto btn btn-primary p-2 fw-bold" onClick={handleClose} value="submit" />
+                                <div className=' container text-center mt-2'>
+                                    <button className='btn btn-primary' onClick={handleClose} type='submit'>submit</button> { }
+                                    <button className='btn btn-danger' onClick={handleClose} >cancel</button>
+                                </div>
                             </form>
                         </div>
                     </Modal.Body>
                     <Modal.Footer>
-                        {/* <Button variant="primary" type='submit' className="mx-auto" onClick={handleClose}>
-                            close
-                        </Button> */}
                     </Modal.Footer>
                 </Modal>
             </>
