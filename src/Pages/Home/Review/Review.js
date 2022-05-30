@@ -17,7 +17,7 @@ const Review = () => {
     // users review data 
     const [userReview, setUserReview] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/userReview')
+        fetch('https://desolate-sierra-72252.herokuapp.com/userReview')
             .then(res => res.json())
             .then(data => {
                 setUserReview(data);

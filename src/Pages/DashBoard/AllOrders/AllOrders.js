@@ -6,7 +6,7 @@ const AllOrders = () => {
     // const [active,setActive] = useState(false);
 
     useEffect(() => {
-        fetch('http://localhost:5000/allOrders')
+        fetch('https://desolate-sierra-72252.herokuapp.com/allOrders')
             .then(res => res.json())
             .then(data => {
                 setAllOrders(data)
@@ -18,7 +18,7 @@ const AllOrders = () => {
         console.log('id',id);
        const processed = window.confirm('Do you want to deleted Orders? Please Think again about it. Thank you');
        if(processed){
-           const url = `http://localhost:5000/remove/${id}`;
+           const url = `https://desolate-sierra-72252.herokuapp.com/remove/${id}`;
            fetch(url, {
                method: 'DELETE',
                headers: {

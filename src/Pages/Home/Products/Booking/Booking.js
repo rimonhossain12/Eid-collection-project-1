@@ -18,7 +18,7 @@ const Booking = () => {
     const { register, handleSubmit } = useForm();
 
     useEffect(() => {
-        fetch(`http://localhost:5000/product/${productId}`)
+        fetch(`https://desolate-sierra-72252.herokuapp.com/product/${productId}`)
             .then(res => res.json())
             .then(data => {
                 setProduct(data);
@@ -37,7 +37,7 @@ const Booking = () => {
         }
         setOrder(newData);
         console.log(newData);
-        fetch('http://localhost:5000/order', {
+        fetch('https://desolate-sierra-72252.herokuapp.com/order', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

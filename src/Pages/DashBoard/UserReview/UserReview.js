@@ -38,7 +38,7 @@ const UserReview = () => {
             comment: data.comments
         }
         console.log('total user opinion', newInfo);
-        fetch('http://localhost:5000/review', {
+        fetch('https://desolate-sierra-72252.herokuapp.com/review', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

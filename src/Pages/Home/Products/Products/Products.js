@@ -12,7 +12,7 @@ const Products = () => {
     const size = 10;
 
     useEffect(() => {
-        fetch(`http://localhost:5000/productsLimit?page=${page}&&size=${size}`)
+        fetch(`https://desolate-sierra-72252.herokuapp.com/productsLimit?page=${page}&&size=${size}`)
             .then(res => res.json())
             .then(data => {
                 // setDisplayProducts(data.products);

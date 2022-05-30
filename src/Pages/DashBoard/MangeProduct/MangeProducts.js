@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 const MangeProducts = () => {
     const [allProducts, setAllProducts] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/products')
+        fetch('https://desolate-sierra-72252.herokuapp.com/products')
             .then(res => res.json())
             .then(data => {
                 setAllProducts(data);
@@ -14,7 +14,7 @@ const MangeProducts = () => {
     const handleOnClick = (id) => {
         // alert('button is click')
         const isDelete = window.confirm('Are your sure delete this item?');
-        const url = `http://localhost:5000/deleteProduct/${id}`;
+        const url = `https://desolate-sierra-72252.herokuapp.com/deleteProduct/${id}`;
         if (isDelete) {
             fetch(url, {
                 method: 'DELETE',

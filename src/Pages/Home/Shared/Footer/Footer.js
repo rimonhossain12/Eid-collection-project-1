@@ -6,7 +6,7 @@ import './Footer.css';
 const Footer = () => {
     const {register,handleSubmit,reset} = useForm();
     const onSubmit = (data, e) => {
-        fetch('http://localhost:5000/subscribed',{
+        fetch('https://desolate-sierra-72252.herokuapp.com/subscribed',{
             method:'POST',
             headers:{
                 'content-type':'application/json'

@@ -15,7 +15,7 @@ const UserOrders = () => {
     let productList = myOrders.length;
     // console.log(productList);
 
-    const url = `http://localhost:5000/myOrders/${user.email}`;
+    const url = `https://desolate-sierra-72252.herokuapp.com/myOrders/${user.email}`;
     console.log(url);
     useEffect(() => {
         fetch(url)
@@ -28,7 +28,7 @@ const UserOrders = () => {
 
     const handleDeleteButton = (id) => {
         const processed = window.confirm('Do you want to Cancel your products?');
-        const url = `http://localhost:5000/remove/${id}`;
+        const url = `https://desolate-sierra-72252.herokuapp.com/remove/${id}`;
         if (processed) {
             fetch(url, {
                 method: 'DELETE',
@@ -51,7 +51,7 @@ const UserOrders = () => {
     // load data form click any random edit button
     const LoadInfo = (id) => {
         try {
-            fetch(`http://localhost:5000/orderUpdate/${id}`)
+            fetch(`https://desolate-sierra-72252.herokuapp.com/orderUpdate/${id}`)
                 .then(res => res.json())
                 .then(data => {
                     console.log(data);
@@ -79,7 +79,7 @@ const UserOrders = () => {
         console.log('after updating all the value', newData);
         const id = order._id;
         console.log('id found ', id);
-        fetch(`http://localhost:5000/updateInfo/${id}`, {
+        fetch(`https://desolate-sierra-72252.herokuapp.com/updateInfo/${id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

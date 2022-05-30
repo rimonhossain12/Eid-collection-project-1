@@ -12,7 +12,7 @@ const AddProduct = () => {
 
     const onSubmit = data => {
         console.log(data);
-        fetch('http://localhost:5000/addedProduct', {
+        fetch('https://desolate-sierra-72252.herokuapp.com/addedProduct', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
