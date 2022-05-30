@@ -36,10 +36,10 @@ const DashBoardHome = () => {
                                         <i class="fas fa-book-reader"></i>
                                         <Link className='list-style' to="/DashBoard/addProducts">Add Products</Link>
                                     </li>
-                                    {/* <li>
+                                    <li>
                                         <i class="fas fa-user-circle" style={{ color: 'dark' }}></i>
                                         <Link className='list-style' to="/DashBoard/mangeProduct">Mange Products</Link>
-                                    </li> */}
+                                    </li>
                                     <li>
                                         <i class="fa-solid fa-person"></i>
                                         <Link className='list-style' to="/DashBoard/makeAdmin">Make Admin</Link>
@@ -59,7 +59,7 @@ const DashBoardHome = () => {
                                 <output></output>
                                 <output></output>
                                 <output></output>
-                                {/* <output></output> */}
+                                <output></output>
                                 <output></output>
                             </>
                         }

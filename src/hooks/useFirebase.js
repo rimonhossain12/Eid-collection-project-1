@@ -109,7 +109,7 @@ const useFirebase = () => {
 
     // admin trigger this email is admin checking
     useEffect(() => {
-        fetch(`http://localhost:5000/foundAdmin/${user.email}`)
+        fetch(`https://desolate-sierra-72252.herokuapp.com/foundAdmin/${user.email}`)
         .then(res => res.json())
         .then(data => {
             console.log(data);
@@ -121,7 +121,7 @@ const useFirebase = () => {
     const savedUsers = (email,displayName,method) => {
        const user = {email,displayName}
        console.log('user send',user);
-        fetch('http://localhost:5000/registerUsers',{
+        fetch('https://desolate-sierra-72252.herokuapp.com/registerUsers',{
             method:method,
             headers:{
                 'content-type':'application/json'
