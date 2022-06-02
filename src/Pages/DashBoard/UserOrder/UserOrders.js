@@ -24,7 +24,7 @@ const UserOrders = () => {
                 console.log(data);
                 setMyOrders(data);
             })
-    }, [user.email, url]);
+    }, [url]);
 
     const handleDeleteButton = (id) => {
         const processed = window.confirm('Do you want to Cancel your products?');

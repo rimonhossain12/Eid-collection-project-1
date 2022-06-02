@@ -6,7 +6,7 @@ import './SingleReview.css';
 
 const SingleReview = ({ review }) => {
     const { name, email, Rating, comment } = review;
-    console.log(review);
+    // console.log(review);
     // console.log(rating);
     // let newRating = rating;
     return (

@@ -6,7 +6,8 @@
     display: flex;
     flex-direction: column;
     margin-top: 10px;
-    width: 50%;
+    width: 70%;
+    /* text-align: center; */
 }
 
 #booking-img-style{
@@ -14,4 +15,12 @@
     width: 100%;
     transition: all .5s;
     border-radius: 2px;
+}
+
+.icon-style{
+    display: table;
+    margin: 0 auto;
+}
+.submit-btn{
+    text-align: center;
 }
