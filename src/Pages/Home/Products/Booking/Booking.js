@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import ReactStars from 'react-rating-stars-component';
-import {useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import useAuth from '../../../../hooks/useAuth';
 import Banner from '../../Shared/Banner/Banner';
 import './Booking.css';
@@ -12,7 +12,7 @@ const Booking = () => {
     const [show, setShow] = useState(false);
     // const [orderProduct,setOrderProduct] = useState();
     const { register, handleSubmit,reset } = useForm();
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -39,9 +39,7 @@ const Booking = () => {
             price:product.price
         }
         console.log('new data',newData);
-        // setOrderProduct(newData);
-        /* fetch('https://desolate-sierra-72252.herokuapp.com/order', */
-        fetch('http://localhost:5000/order',{
+        fetch('https://desolate-sierra-72252.herokuapp.com/order',{
             method:'POST',
             headers:{
                 'content-type':'application/json'
@@ -52,14 +50,11 @@ const Booking = () => {
         .then(data => {
             if(data.insertedId){
                 handleShow();
-                <Button variant="primary" onClick={handleShow}></Button>
+                <Button variant="primary" onClick={handleShow}>{navigate('/DashBoard/userOrder')}</Button>
                 reset();                
             }
         })
-        // e.preventDefault();
     };
-
-    // console.log('all the user order info',orderProduct);
 
     return (
         <>

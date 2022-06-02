@@ -6,9 +6,6 @@ import './SingleReview.css';
 
 const SingleReview = ({ review }) => {
     const { name, email, Rating, comment } = review;
-    // console.log(review);
-    // console.log(rating);
-    // let newRating = rating;
     return (
         <Card style={{ minHeight: "375px", width: '100%' }} className="my-4 shadow p-3 mb-5 bg-body rounded">
             <img src={profileImg} className="img-fluid w-25 mx-auto" alt="" />
@@ -31,7 +28,7 @@ const SingleReview = ({ review }) => {
                 <h6 className="fw-normal text-center mx-auto" style={{ color: '#05445D' }}>
                    
                 </h6>
-                <Card.Text>{comment?.slice(0, 140)}</Card.Text>
+                <Card.Text id='comment'>{comment?.slice(0, 30)}</Card.Text>
             </Card.Body>
         </Card>
     );

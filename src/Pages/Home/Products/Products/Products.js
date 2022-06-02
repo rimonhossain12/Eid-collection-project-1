@@ -31,7 +31,7 @@ const Products = () => {
                 <hr className='mx-auto w-25 text-danger' />
             </div>
             <div className='container'>
-                <Row xs={2} md={3} lg={4}>
+                <Row xs={1} md={2} lg={4}>
                     {
                         products.map(product => <Product
                             key={product._id}
