@@ -1,4 +1,4 @@
-import { getAuth, onAuthStateChanged, createUserWithEmailAndPassword, GithubAuthProvider, updateProfile, signInWithEmailAndPassword, signOut, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { getAuth, onAuthStateChanged, createUserWithEmailAndPassword, GithubAuthProvider, updateProfile, signInWithEmailAndPassword, signOut, GoogleAuthProvider, signInWithPopup,getIdToken } from "firebase/auth";
 import { useEffect, useState } from "react";
 import initializeAuthentication from "../Pages/Login/Firebase/firebase.init";
 
@@ -99,7 +99,12 @@ const useFirebase = () => {
     useEffect(() => {
         onAuthStateChanged(auth, (user) => {
             if (user) {
+            //    getIdToken(user)
+            //    .then(idToken => console.log('idToken',idToken))
+               getIdToken(user)
+                    .then(idToken => localStorage.setItem('idToken',idToken));
                 setUser(user);
+                
             } else {
                 setUser({});
             }
@@ -109,7 +114,7 @@ const useFirebase = () => {
 
     // admin trigger this email is admin checking
     useEffect(() => {
-        fetch(`https://desolate-sierra-72252.herokuapp.com/foundAdmin/${user.email}`)
+        fetch(`https://eid-collection-server1.onrender.com/foundAdmin/${user.email}`)
         .then(res => res.json())
         .then(data => {
             console.log(data);
@@ -121,7 +126,7 @@ const useFirebase = () => {
     const savedUsers = (email,displayName,method) => {
        const user = {email,displayName}
        console.log('user send',user);
-        fetch('https://desolate-sierra-72252.herokuapp.com/registerUsers',{
+        fetch('https://eid-collection-server1.onrender.com/registerUsers',{
             method:method,
             headers:{
                 'content-type':'application/json'

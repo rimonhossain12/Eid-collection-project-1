@@ -4,7 +4,7 @@
 // const UpdateInfo = () => {
 //     const { register, handleSubmit } = useForm();
 //     const HandleUserInformation = (id) => {
-//         const url = `https://desolate-sierra-72252.herokuapp.com/orderUpdate/${id}`;
+//         const url = `https://eid-collection-server1.onrender.com/orderUpdate/${id}`;
 //         console.log(url);
 //         useEffect(() => {
 //             fetch(url)

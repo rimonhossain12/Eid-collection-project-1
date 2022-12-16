@@ -3,7 +3,7 @@ import React,{useState,useEffect} from 'react';
 const Subscribers = () => {
     const [subscribers,setSubscribers] = useState([]);
     useEffect(() =>{
-        fetch('https://desolate-sierra-72252.herokuapp.com/subscribers')
+        fetch('https://eid-collection-server1.onrender.com/subscribers')
         .then(res => res.json())
         .then(data => {
             setSubscribers(data);

@@ -6,7 +6,7 @@ import './Footer.css';
 const Footer = () => {
     const {register,handleSubmit,reset} = useForm();
     const onSubmit = (data, e) => {
-        fetch('https://desolate-sierra-72252.herokuapp.com/subscribed',{
+        fetch('https://eid-collection-server1.onrender.com/subscribed',{
             method:'POST',
             headers:{
                 'content-type':'application/json'

@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 const Admin = () => {
     const { register, handleSubmit,reset } = useForm();
     const onSubmit = data => {
-        fetch('https://desolate-sierra-72252.herokuapp.com/admin', {
+        fetch('https://eid-collection-server1.onrender.com/admin', {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

@@ -12,7 +12,7 @@ const AddProduct = () => {
 
     const onSubmit = data => {
         console.log(data);
-        fetch('https://desolate-sierra-72252.herokuapp.com/addedProduct', {
+        fetch('https://eid-collection-server1.onrender.com/addedProduct', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

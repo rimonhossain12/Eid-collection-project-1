@@ -21,7 +21,7 @@ const Booking = () => {
     const { user } = useAuth();
 
     useEffect(() => {
-        fetch(`https://desolate-sierra-72252.herokuapp.com/product/${productId}`)
+        fetch(`https://eid-collection-server1.onrender.com/product/${productId}`)
             .then(res => res.json())
             .then(data => {
                 setProduct(data);
@@ -39,7 +39,7 @@ const Booking = () => {
             price:product.price
         }
         console.log('new data',newData);
-        fetch('https://desolate-sierra-72252.herokuapp.com/order',{
+        fetch('https://eid-collection-server1.onrender.com/order',{
             method:'POST',
             headers:{
                 'content-type':'application/json'

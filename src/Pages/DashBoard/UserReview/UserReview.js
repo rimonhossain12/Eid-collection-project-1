@@ -38,7 +38,7 @@ const UserReview = () => {
             comment: data.comments
         }
         console.log('total user opinion', newInfo);
-        fetch('https://desolate-sierra-72252.herokuapp.com/review', {
+        fetch('https://eid-collection-server1.onrender.com/review', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

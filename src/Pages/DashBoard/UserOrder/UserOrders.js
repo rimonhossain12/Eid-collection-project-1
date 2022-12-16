@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Button, Modal } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import useAuth from '../../../hooks/useAuth';
+import { useNavigate } from "react-router-dom";
 
 const UserOrders = () => {
     const [myOrders, setMyOrders] = useState([]);
@@ -13,22 +14,31 @@ const UserOrders = () => {
     const { user } = useAuth();
 
     let productList = myOrders.length;
-    // console.log(productList);
-
-    const url = `https://desolate-sierra-72252.herokuapp.com/myOrders/${user.email}`;
-    console.log(url);
+    const navigate = useNavigate()
+    // const url = `https://eid-collection-server1.onrender.com/myOrders/${user.email}`;
+    const url = `http://localhost:5000/myOrders/${user.email}`;
     useEffect(() => {
-        fetch(url)
-            .then(res => res.json())
+        fetch(url,{
+            headers:{
+                'authorization': `Bearer ${localStorage.getItem('idToken')}`
+            }
+        })
+            .then(res => {
+                if(res.status === 200){
+                    return res.json();
+                }else if(res.status === 401){
+                    navigate('/login')   
+                }
+            })
             .then(data => {
                 console.log(data);
                 setMyOrders(data);
             })
-    }, [url]);
+    }, [navigate,url]);
 
     const handleDeleteButton = (id) => {
         const processed = window.confirm('Do you want to Cancel your products?');
-        const url = `https://desolate-sierra-72252.herokuapp.com/remove/${id}`;
+        const url = `https://eid-collection-server1.onrender.com/remove/${id}`;
         if (processed) {
             fetch(url, {
                 method: 'DELETE',
@@ -51,7 +61,7 @@ const UserOrders = () => {
     // load data form click any random edit button
     const LoadInfo = (id) => {
         try {
-            fetch(`https://desolate-sierra-72252.herokuapp.com/orderUpdate/${id}`)
+            fetch(`https://eid-collection-server1.onrender.com/orderUpdate/${id}`)
                 .then(res => res.json())
                 .then(data => {
                     console.log(data);
@@ -79,7 +89,7 @@ const UserOrders = () => {
         console.log('after updating all the value', newData);
         const id = order._id;
         console.log('id found ', id);
-        fetch(`https://desolate-sierra-72252.herokuapp.com/updateInfo/${id}`, {
+        fetch(`https://eid-collection-server1.onrender.com/updateInfo/${id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

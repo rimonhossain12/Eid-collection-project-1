@@ -7,10 +7,11 @@ import SingleProducts from '../SingleProducts/SingleProducts';
 const AllProducts = () => {
     const [products, setProducts] = useState([]);
     useEffect(() => {
-        fetch('https://desolate-sierra-72252.herokuapp.com/products')
+        fetch('https://eid-collection-server1.onrender.com/products')
             .then(res => res.json())
             .then(data => setProducts(data));
     }, [])
+//    admin@admin.com
 
     return (
         <div>
