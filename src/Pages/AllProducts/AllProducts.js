@@ -11,7 +11,6 @@ const AllProducts = () => {
             .then(res => res.json())
             .then(data => setProducts(data));
     }, [])
-//    admin@admin.com
 
     return (
         <div>
